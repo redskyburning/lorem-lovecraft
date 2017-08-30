@@ -1,0 +1,14 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+
+$icon-font-path: "../../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+$navbar-inverse-link-color:$gray-lighter;
+$navbar-inverse-brand-color:$gray-lighter;
+$navbar-inverse-bg:$gray-dark;
+
+$font-family-base:$roboto;
+
+$headings-font-family:$roboto-condensed;

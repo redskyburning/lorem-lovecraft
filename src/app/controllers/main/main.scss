@@ -1,0 +1,36 @@
+body {
+	min-height:100vh;
+}
+
+.main {
+	display:flex;
+	flex-direction:column;
+
+	&__wrapper {
+	}
+
+	&__nav {
+		margin-bottom:0;
+		font-family:$roboto-condensed;
+
+		.navbar-brand {
+			font-size:$font-size-h3;
+		}
+
+		.navbar-nav {
+			> li {
+				> a {
+					font-size:$font-size-h4;
+				}
+			}
+		}
+	}
+
+	&__view {
+		flex:1 0 auto;
+
+		> * {
+			min-height:100vh;
+		}
+	}
+}

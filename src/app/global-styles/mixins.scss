@@ -1,0 +1,20 @@
+// Custom mixins here TODO: move
+@mixin calc-grid-width($items-per-row,$item-spacing) {
+	$item-base-width:100% / $items-per-row;
+	$per-item-spacing:(($items-per-row - 1) * $item-spacing) / $items-per-row;
+
+	width:calc(#{$item-base-width} - #{$per-item-spacing});
+}
+
+@mixin color-swatch-variant($key,$color,$baseClass:'.color-swatch') {
+	#{$baseClass}__#{$key} {
+		#{$baseClass}__swatch {
+			background: $color;
+		}
+	}
+}
+
+@mixin responsive-image() {
+	width:100%;
+	height:auto;
+}

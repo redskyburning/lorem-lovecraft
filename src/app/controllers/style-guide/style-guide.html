@@ -1,0 +1,1054 @@
+<div class="style-guide" id="content" vocab="http://schema.org/" typeof="Content">
+
+	<div class="style-guide__header jumbotron">
+		<h1 class="style-guide__title container">Style Guide</h1>
+	</div>
+
+	<div class="style-guide__content">
+
+		<section class="style-guide__section container" id="colors">
+
+			<h2 class="style-guide__section__title">Colors</h2>
+
+			<div class="style-guide__section__body">
+
+				<div ng-repeat="(key,label) in vm.colors" class="color-swatch color-swatch__{{ key }}">
+					<div class="color-swatch__swatch">&nbsp;</div>
+					<div class="color-swatch__label">{{ label }}</div>
+				</div>
+
+			</div>
+
+			<h3 class="style-guide__section__subtitle">Semantic Colors</h3>
+
+			<div class="style-guide__section__body">
+
+				<div ng-repeat="(key,label) in vm.semanticColors" class="color-swatch color-swatch__{{ key }}">
+					<div class="color-swatch__swatch">&nbsp;</div>
+					<div class="color-swatch__label">{{ label }}</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="container style-guide__section" id="buttons">
+
+			<h2 class="style-guide__section__title">Buttons</h2>
+
+			<div ng-repeat="size in vm.buttonSizes">
+				<h3 class="style-guide__section__subtitle">{{ size.name }} Buttons</h3>
+				<div class="style-guide__button-row">
+					<a ng-repeat="bt in vm.buttonTypes" href="#" class="btn btn-{{ size.code }} btn-{{ bt }}">{{ bt
+						}}</a>
+				</div>
+			</div>
+
+			<h3 class="style-guide__section__subtitle">UIB Radio Buttons</h3>
+
+			<div class="style-guide__button-row">
+
+				<div class="btn-group"
+					 ng-repeat="bt in vm.buttonTypes">
+					<label class="btn btn-{{ bt }}"
+						   ng-repeat="(radioKey,radioValue) in vm.radios"
+						   ng-model="vm.radioModel"
+						   uib-btn-radio="radioKey">{{ radioValue }}</label>
+				</div>
+
+			</div>
+
+			<h3 class="style-guide__section__subtitle">UIB Dropdowns</h3>
+
+			<div class="style-guide__dropdown-group">
+
+				<div class="btn-group style-guide__dropdown"
+					 ng-repeat="bt in vm.buttonTypes" uib-dropdown>
+					<button type="button" class="btn btn-{{ bt }}" uib-dropdown-toggle>
+						{{ bt }} <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" uib-dropdown-menu >
+						<li role="menuitem"><a href="#">Action</a></li>
+						<li role="menuitem"><a href="#">Another action</a></li>
+						<li role="menuitem"><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li role="menuitem"><a href="#">Separated link</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</section>
+
+		<section class="style-guide__section container" id="popovers">
+			<h2 class="style-guide__section__title">Popovers</h2>
+			<div class="style-guide__section__body">
+				<div class="style-guide__button-row">
+					<button popover-placement="top"
+							uib-popover="I'm a popover!"
+							type="button"
+							class="btn btn-default">Top Popover</button>
+					<button popover-placement="bottom"
+							uib-popover="I'm a popover!"
+							type="button"
+							class="btn btn-default">Bottom Popover</button>
+					<button popover-placement="top"
+							uib-popover="I'm a popover!"
+							type="button"
+							popover-trigger="'mouseenter'"
+							class="btn btn-default">Hover Popover</button>
+				</div>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="typeahead">
+			<h2 class="style-guide__section__title">Typeahead</h2>
+			<div class="style-guide__section__body">
+
+				<div class="form-group">
+					<label class="control-label">Typeahead Input</label>
+					<input type="text" class="form-control"
+						   ng-model="vm.typeaheadSelection"
+						   typeahead-editable="false"
+						   uib-typeahead="state for state in vm.states | filter:$viewValue | limitTo:8">
+				</div>
+				<label class="control-label">Typeahead Results</label>
+				<pre>{{ vm.typeaheadSelection|json }}</pre>
+
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="modals">
+			<h2 class="style-guide__section__title">Modals</h2>
+			<div class="style-guide__section__body">
+
+				<!-- Button trigger modal -->
+				<div class="style-guide__button-row">
+					<button type="button" class="btn btn-primary" ng-click="vm.openModal()">
+						Regular Modal
+					</button>
+					<button type="button" class="btn btn-primary" ng-click="vm.openModal('lg')">
+						Large Modal
+					</button>
+					<button type="button" class="btn btn-primary" ng-click="vm.openModal('sm')">
+						Small Modal
+					</button>
+
+				</div>
+
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="accordion">
+			<h2 class="style-guide__section__title">Accordion</h2>
+			<div class="style-guide__section__body">
+
+				<uib-accordion close-others="true">
+					<div uib-accordion-group class="panel-default" heading="Panel #{{accI}}" ng-repeat="accI in [1,2,3,4,5]" is-open="$first">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					</div>
+				</uib-accordion>
+
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="carousel">
+            <h2 class="style-guide__section__title">Carousel</h2>
+            <div class="style-guide__section__body">
+				<div uib-carousel active="0">
+					<div uib-slide ng-repeat="(slideI,slide) in vm.slides" index="slideI" index="slideI">
+						<img ng-src="{{slide.url}}" style="margin:auto;">
+						<div class="carousel-caption">
+							<h4>Slide {{slideI}}</h4>
+							<p>{{slide.caption}}</p>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+
+		<section class="container style-guide__section" id="headings">
+
+			<h2 class="style-guide__section__title">Headings</h2>
+
+			<div class="style-guide__section__body">
+				<h1><strong><u>H1</u> :</strong> The <strong>quick</strong> <em>brown</em> <a href="#">fox jumps</a>
+					over the
+					<small>lazy</small>
+					dog
+				</h1>
+				<h2><strong><u>H2</u> :</strong> The <strong>quick</strong> <em>brown</em> <a href="#">fox jumps</a>
+					over the
+					<small>lazy</small>
+					dog
+				</h2>
+				<h3><strong><u>H3</u> :</strong> The <strong>quick</strong> <em>brown</em> <a href="#">fox jumps</a>
+					over the
+					<small>lazy</small>
+					dog
+				</h3>
+				<h4><strong><u>H4</u> :</strong> The <strong>quick</strong> <em>brown</em> <a href="#">fox jumps</a>
+					over the
+					<small>lazy</small>
+					dog
+				</h4>
+				<h5><strong><u>H5</u> :</strong> The <strong>quick</strong> <em>brown</em> <a href="#">fox jumps</a>
+					over the
+					<small>lazy</small>
+					dog
+				</h5>
+				<h6><strong><u>H6</u> :</strong> The <strong>quick</strong> <em>brown</em> <a href="#">fox jumps</a>
+					over the
+					<small>lazy</small>
+					dog
+				</h6>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="paragraphs">
+			<h2 class="style-guide__section__title">Paragraphs</h2>
+			<div class="style-guide__section__body">
+				<p>Then, <strong>advancing obliquely towards us</strong>, came a fifth. Their armoured bodies
+					<em>glittered in the sun</em> as they swept <a href="#">swiftly forward</a> upon the guns,
+					<mark>growing rapidly larger</mark>
+					as they
+					<del>drew nearer</del>
+					. One on the
+					<strike>extreme left</strike>,
+					<small>the remotest that is</small>
+					, <a href="#">flourished a
+						<strong>huge case <em>high in</em></strong> the air, and the <em>ghostly</em>, terrible Heat-Ray</a>
+					I had already seen on Friday night smote towards Chertsey, and struck the town.
+				</p>
+
+				<p>At sight of these strange, swift, and terrible creatures the crowd near the water's edge seemed to me
+					to be for a moment horror-struck. There was no screaming or shouting, but a silence. Then a hoarse
+					murmur and a movement of feet&#45;&#45;a splashing from the water. A man, too frightened to drop the
+					portmanteau he carried on his shoulder, swung round and sent me staggering with a blow from the
+					corner of his burden. A woman thrust at me with her hand and rushed past me. I turned with the rush
+					of the people, but I was not too terrified for thought. The terrible Heat-Ray was in my mind. To get
+					under water! That was it!</p>
+
+				<p>"Get under water!" I shouted, unheeded.</p>
+
+				<p>I faced about again, and rushed towards the approaching Martian, rushed right down the gravelly beach
+					and headlong into the water. Others did the same. A boatload of people putting back came leaping out
+					as I rushed past. The stones under my feet were muddy and slippery, and the river was so low that I
+					ran perhaps twenty feet scarcely waist-deep. Then, as the Martian towered overhead scarcely a couple
+					of hundred yards away, I flung myself forward under the surface. The splashes of the people in the
+					boats leaping into the river sounded like thunderclaps in my ears. People were landing hastily on
+					both sides of the river. But the Martian machine took no more notice for the moment of the people
+					running this way and that than a man would of the confusion of ants in a nest against which his foot
+					has kicked. When, half suffocated, I raised my head above water, the Martian's hood pointed at the
+					batteries that were still firing across the river, and as it advanced it swung loose what must have
+					been the generator of the Heat-Ray.</p>
+			</div>
+
+			<h3 class="style-guide__section__subtitle">Lead Paragraph</h3>
+			<p class="lead">Then,
+				<strong>advancing obliquely towards us</strong>, came a fifth. Their armoured bodies
+				<em>glittered in the sun</em> as they swept <a href="#">swiftly forward</a> upon the guns,
+				<mark>growing rapidly larger</mark>
+				as they
+				<del>drew nearer</del>
+				. One on the
+				<strike>extreme left</strike>,
+				<small>the remotest that is</small>
+				, <a href="#">flourished a
+					<strong>huge case <em>high in</em></strong> the air, and the
+					<em>ghostly</em>, terrible Heat-Ray</a> I had already seen on Friday night smote towards Chertsey,
+				and struck the town.
+			</p>
+
+			<p>At sight of these strange, swift, and terrible creatures the crowd near the water's edge seemed to me to
+				be for a moment horror-struck. There was no screaming or shouting, but a silence. Then a hoarse murmur
+				and a movement of feet&#45;&#45;a splashing from the water. A man, too frightened to drop the
+				portmanteau he carried on his shoulder, swung round and sent me staggering with a blow from the corner
+				of his burden. A woman thrust at me with her hand and rushed past me. I turned with the rush of the
+				people, but I was not too terrified for thought. The terrible Heat-Ray was in my mind. To get under
+				water! That was it!</p>
+
+			<p>"Get under water!" I shouted, unheeded.</p>
+
+			<p>I faced about again, and rushed towards the approaching Martian, rushed right down the gravelly beach and
+				headlong into the water. Others did the same. A boatload of people putting back came leaping out as I
+				rushed past. The stones under my feet were muddy and slippery, and the river was so low that I ran
+				perhaps twenty feet scarcely waist-deep. Then, as the Martian towered overhead scarcely a couple of
+				hundred yards away, I flung myself forward under the surface. The splashes of the people in the boats
+				leaping into the river sounded like thunderclaps in my ears. People were landing hastily on both sides
+				of the river. But the Martian machine took no more notice for the moment of the people running this way
+				and that than a man would of the confusion of ants in a nest against which his foot has kicked. When,
+				half suffocated, I raised my head above water, the Martian's hood pointed at the batteries that were
+				still firing across the river, and as it advanced it swung loose what must have been the generator of
+				the Heat-Ray.</p>
+
+			<h3 class="style-guide__section__subtitle">Block Quotes</h3>
+
+			<p>At sight of these strange, swift, and terrible creatures the crowd near the water's edge seemed to me to
+				be for a moment horror-struck. There was no screaming or shouting, but a silence. Then a hoarse murmur
+				and a movement of feet&#45;&#45;a splashing from the water. A man, too frightened to drop the
+				portmanteau he carried on his shoulder, swung round and sent me staggering with a blow from the corner
+				of his burden. A woman thrust at me with her hand and rushed past me. I turned with the rush of the
+				people, but I was not too terrified for thought. The terrible Heat-Ray was in my mind. To get under
+				water! That was it!</p>
+			<blockquote>
+				<p><strong>Block Quote:</strong> Then,
+					<strong>advancing obliquely towards us</strong>, came a fifth. Their armoured bodies
+					<em>glittered in the sun</em> as they swept <a href="#">swiftly forward</a> upon the guns,
+					<mark>growing rapidly larger</mark>
+					as they
+					<del>drew nearer</del>
+					. One on the
+					<strike>extreme left</strike>,
+					<small>the remotest that is</small>
+					, <a href="#">flourished a
+						<strong>huge case <em>high in</em></strong> the air, and the <em>ghostly</em>, terrible Heat-Ray</a>
+					I had already seen on Friday night smote towards Chertsey, and struck the town.
+				</p>
+				<footer>H. G. Wells, <cite title="Source Title">The War of the Worlds</cite></footer>
+			</blockquote>
+
+			<p>I faced about again, and rushed towards the approaching Martian, rushed right down the gravelly beach and
+				headlong into the water. Others did the same. A boatload of people putting back came leaping out as I
+				rushed past. The stones under my feet were muddy and slippery, and the river was so low that I ran
+				perhaps twenty feet scarcely waist-deep. Then, as the Martian towered overhead scarcely a couple of
+				hundred yards away, I flung myself forward under the surface. The splashes of the people in the boats
+				leaping into the river sounded like thunderclaps in my ears. People were landing hastily on both sides
+				of the river. But the Martian machine took no more notice for the moment of the people running this way
+				and that than a man would of the confusion of ants in a nest against which his foot has kicked. When,
+				half suffocated, I raised my head above water, the Martian's hood pointed at the batteries that were
+				still firing across the river, and as it advanced it swung loose what must have been the generator of
+				the Heat-Ray.</p>
+
+			<blockquote class="blockquote-reverse">
+				<p>
+					<strong>Reverse Block Quote:</strong> Then, advancing obliquely towards us, came a fifth. Their
+					armoured bodies glittered in the sun as they swept swiftly forward upon the guns, growing rapidly
+					larger as they drew nearer. One on the extreme left, the remotest that is, flourished a huge case
+					high in the air, and the ghostly, terrible Heat-Ray I had already seen on Friday night smote towards
+					Chertsey, and struck the town.
+				</p>
+				<footer>H. G. Wells, <cite title="Source Title">The War of the Worlds</cite></footer>
+			</blockquote>
+
+
+			<p>In another moment it was on the bank, and in a stride wading halfway across. The knees of its foremost
+				legs bent at the farther bank, and in another moment it had raised itself to its full height again,
+				close to the village of Shepperton. Forthwith the six guns which, unknown to anyone on the right bank,
+				had been hidden behind the outskirts of that village, fired simultaneously. The sudden near concussion,
+				the last close upon the first, made my heart jump. The monster was already raising the case generating
+				the Heat-Ray as the first shell burst six yards above the hood.</p>
+		</section>
+
+		<section class="style-guide__section container" id="jumbotron">
+			<h2 class="style-guide__section__title">Jumbotron</h2>
+			<div class="style-guide__section__body">
+				<div class="jumbotron">
+					<h1>Hello, world!</h1>
+					<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+						featured content or information.</p>
+					<p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+				</div>
+			</div>
+		</section>
+
+		<section class="style-guide__section jumbotron" id="jumbo-full">
+			<div class="container">
+				<h1>Full Bleed Jumbotron!</h1>
+				<p>This version fills the viewport</p>
+				<p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="icons">
+			<h2 class="style-guide__section__title">Icons</h2>
+			<div class="style-guide__section__body">
+				<ul class="style-guide__icons">
+					<li class="style-guide__icon" ng-repeat="icon in vm.icons">
+						<span class="style-guide__icon__glyph glyphicon glyphicon-{{ icon }}"></span> <span
+						class="style-guide__icon__title">{{ icon }}</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="panels">
+			<h2 class="style-guide__section__title">Panels</h2>
+
+			<div class="style-guide__section__body" ng-repeat="type in vm.panelTypes">
+
+				<div class="panel panel-{{ type }}">
+					<div class="panel-heading">
+						<h3 class="panel-title">{{ type }} Panel title</h3>
+					</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+					<div class="panel-footer">Panel footer</div>
+				</div>
+
+			</div>
+
+		</section>
+
+		<section class="style-guide__section container" id="alert">
+			<h2 class="style-guide__section__title">Alerts</h2>
+			<div class="style-guide__section__body">
+
+				<div uib-alert ng-repeat="alert in vm.alerts"
+					 ng-class="vm.getAlertClass(alert.type)"
+					 close="vm.closeAlert($index)">{{ alert.message }}</div>
+
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="pagination">
+			<h2 class="style-guide__section__title">Pagination</h2>
+			<div class="style-guide__section__body">
+
+				<ul uib-pagination
+					total-items="100"
+					items-per-page="10"
+					ng-model="vm.currentPage"
+					max-size="5"></ul>
+
+				<h3 class="style-guide__section__subtitle">Large Pagination</h3>
+
+				<ul uib-pagination
+					class="pagination-lg"
+					total-items="100"
+					items-per-page="10"
+					ng-model="vm.currentPage"
+					max-size="5"></ul>
+
+				<h3 class="style-guide__section__subtitle">Small Pagination</h3>
+
+				<ul uib-pagination
+					class="pagination-sm"
+					total-items="100"
+					items-per-page="10"
+					ng-model="vm.currentPage"
+					max-size="5"></ul>
+
+				<h3 class="style-guide__section__subtitle">Pager</h3>
+
+				<nav aria-label="...">
+					<ul class="pager">
+						<li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older (Disabled)</a>
+						</li>
+						<li><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+					</ul>
+				</nav>
+
+				<h3 class="style-guide__section__subtitle">Aligned Pager</h3>
+
+				<nav aria-label="...">
+					<ul class="pager">
+						<li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older
+							(Disabled)</a></li>
+						<li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="breadcrumbs">
+			<h2 class="style-guide__section__title">Bread Crumbs</h2>
+			<div class="style-guide__section__body">
+				<div  data-example-id="simple-breadcrumbs">
+					<ol class="breadcrumb">
+						<li class="active">Home</li>
+					</ol>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li class="active">Library</li>
+					</ol>
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Library</a></li>
+						<li class="active">Data</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="inputs">
+			<h2 class="style-guide__section__title">Inputs</h2>
+			<div class="style-guide__section__body">
+
+				<form>
+
+					<div class="form-group form-group-sm">
+						<input type="input" class="form-control" placeholder="Small Input">
+					</div>
+
+					<div class="form-group">
+						<input type="input" class="form-control" placeholder="Regular Input">
+					</div>
+
+					<div class="form-group form-group-lg">
+						<input type="input" class="form-control" placeholder="Large Input">
+					</div>
+
+					<div class="form-group">
+						<input type="input" class="form-control" placeholder="Disabled Input" disabled>
+					</div>
+
+					<div class="form-group">
+						<input type="input" class="form-control" placeholder="Readonly Input" readonly>
+					</div>
+
+					<div class="form-group">
+						<input type="password" class="form-control" id="passwordInput" placeholder="Password">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="textarea">Textarea</label>
+						<textarea class="form-control" id="textarea" placeholder="Textarea" rows="3"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="exampleSelect">Select</label>
+						<select class="form-control" id="exampleSelect">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+						<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+					</div>
+
+					<label>Checkboxes</label>
+					<div class="checkbox">
+						<label class="control-label">
+							<input type="checkbox" value="">
+							Option one is this and that&mdash;be sure to include why it's great
+						</label>
+					</div>
+					<div class="checkbox disabled">
+						<label class="control-label">
+							<input type="checkbox" value="" disabled>
+							Option two is disabled
+						</label>
+					</div>
+
+					<label>Radio Buttons</label>
+					<div class="radio">
+						<label class="control-label">
+							<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+							Option one is this and that&mdash;be sure to include why it's great
+						</label>
+					</div>
+					<div class="radio">
+						<label class="control-label">
+							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							Option two can be something else and selecting it will deselect option one
+						</label>
+					</div>
+					<div class="radio disabled">
+						<label class="control-label">
+							<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+							Option three is disabled
+						</label>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="input-groups">
+			<h2 class="style-guide__section__title">Input Groups</h2>
+			<div class="style-guide__section__body">
+
+				<div class="form-group">
+					<label class="control-label" for="basic-addon4">Normal State</label>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon4">@</span>
+						<input type="text" class="form-control" placeholder="Email Address"
+							   aria-describedby="basic-addon4">
+					</div>
+					<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+				</div>
+
+				<div class="form-group has-success">
+					<label class="control-label" for="basic-addon4">Success State</label>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon4">@</span>
+						<input type="text" class="form-control" placeholder="Email Address"
+							   value="valid@emailaddress.com"
+							   aria-describedby="basic-addon4">
+					</div>
+					<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+				</div>
+
+				<div class="form-group has-warning">
+					<label class="control-label" for="basic-addon5">Warning State</label>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon5">@</span>
+						<input type="text" class="form-control" placeholder="Email Address" value="semi-valid"
+							   aria-describedby="basic-addon5">
+					</div>
+					<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+				</div>
+
+				<div class="form-group has-error">
+					<label class="control-label" for="basic-addon6">Error State</label>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon6">@</span>
+						<input type="text" class="form-control" placeholder="Email Address" value="not an email"
+							   aria-describedby="basic-addon6">
+					</div>
+					<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+				</div>
+
+				<h3 class="style-guide__section__subtitle">Input Group Addons</h3>
+
+				<div class="form-group">
+					<label class="control-label" for="basic-addon4">Addon at the end (button style)</label>
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Recipient's username"
+							   aria-describedby="basic-addon2">
+						<a class="input-group-addon" id="basic-addon2">Submit</a>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="basic-addon4">Addon at the start</label>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+						<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="basic-addon4">Two in one?! Amazing!</label>
+					<div class="input-group">
+						<span class="input-group-addon">$</span>
+						<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+						<span class="input-group-addon">.00</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="forms">
+			<h2 class="style-guide__section__title">Forms</h2>
+			<div class="style-guide__section__body">
+
+				<form >
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" class="form-control" id="exampleInputPassword1"
+							   placeholder="Password">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputFile">File input</label>
+						<input type="file" id="exampleInputFile">
+						<p class="help-block">Example block-level help text here.</p>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox"> Check me out
+						</label>
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+
+				<h3 class="style-guide__section__subtitle">Inline Form</h3>
+
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="exampleInputName2">Name</label>
+						<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail2">Email</label>
+						<input type="email" class="form-control" id="exampleInputEmail2"
+							   placeholder="jane.doe@example.com">
+					</div>
+					<button type="submit" class="btn btn-default">Send invitation</button>
+				</form>
+
+				<h3 class="style-guide__section__subtitle">Horizontal Form</h3>
+
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+							<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> Remember me
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default">Sign in</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="tables">
+			<h2 class="style-guide__section__title">Tables</h2>
+			<div class="style-guide__section__body">
+				<table class="table table-responsive">
+					<thead>
+					<th>English</th>
+					<th>French</th>
+					<th>German</th>
+					<th>Spanish</th>
+					</thead>
+					<tr>
+						<td>One</td>
+						<td>Un</td>
+						<td>Eins</td>
+						<td>Uno</td>
+					</tr>
+					<tr>
+						<td>Two</td>
+						<td>Deux</td>
+						<td>Zwei</td>
+						<td>Uno</td>
+					</tr>
+					<tr>
+						<td>Three</td>
+						<td>Trois</td>
+						<td>Drei</td>
+						<td>Tres</td>
+					</tr>
+				</table>
+
+				<h3 class="style-guide__section__subtitle">Stripped Table</h3>
+
+				<table class="table table-responsive table-striped">
+					<thead>
+					<th>English</th>
+					<th>French</th>
+					<th>German</th>
+					<th>Spanish</th>
+					</thead>
+					<tr>
+						<td>One</td>
+						<td>Un</td>
+						<td>Eins</td>
+						<td>Uno</td>
+					</tr>
+					<tr>
+						<td>Two</td>
+						<td>Deux</td>
+						<td>Zwei</td>
+						<td>Uno</td>
+					</tr>
+					<tr>
+						<td>Three</td>
+						<td>Trois</td>
+						<td>Drei</td>
+						<td>Tres</td>
+					</tr>
+				</table>
+
+				<h3 class="style-guide__section__subtitle">Hover Table</h3>
+				<table class="table table-responsive table-hover">
+					<thead>
+					<th>English</th>
+					<th>French</th>
+					<th>German</th>
+					<th>Spanish</th>
+					</thead>
+					<tr>
+						<td>One</td>
+						<td>Un</td>
+						<td>Eins</td>
+						<td>Uno</td>
+					</tr>
+					<tr>
+						<td>Two</td>
+						<td>Deux</td>
+						<td>Zwei</td>
+						<td>Uno</td>
+					</tr>
+					<tr>
+						<td>Three</td>
+						<td>Trois</td>
+						<td>Drei</td>
+						<td>Tres</td>
+					</tr>
+				</table>
+
+				<h3 class="style-guide__section__subtitle">Table Classes</h3>
+				<table class="table table-responsive table-hover">
+					<thead>
+					<th>English</th>
+					<th>French</th>
+					<th>German</th>
+					<th>Spanish</th>
+					</thead>
+					<tr class="active">
+						<td>active</td>
+						<td>actif</td>
+						<td>aktive</td>
+						<td>éxito</td>
+					</tr>
+					<tr class="success">
+						<td>success</td>
+						<td>succès</td>
+						<td>erfolg</td>
+						<td>activo</td>
+					</tr>
+					<tr class="info">
+						<td>info</td>
+						<td>infos</td>
+						<td>info</td>
+						<td>info</td>
+					</tr>
+					<tr class="warning">
+						<td>warning</td>
+						<td>avertissement</td>
+						<td>warnende</td>
+						<td>aviso</td>
+					</tr>
+					<tr class="danger">
+						<td>danger</td>
+						<td>danger</td>
+						<td>gefahr</td>
+						<td>peligro</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="lists">
+			<h2 class="style-guide__section__title">Lists</h2>
+			<div class="style-guide__section__body">
+
+				<h3 class="style-guide__section__subtitle">Unordered List</h3>
+				<ul>
+					<li>Then, advancing obliquely towards us, came a fifth</li>
+
+					<li> Their armoured bodies glittered in the sun as they swept swiftly forward upon the guns, growing
+						rapidly larger as they drew nearer
+					</li>
+
+					<li> One on the extreme left, the remotest that is, flourished a huge case high in the air, and the
+						ghostly, terrible Heat-Ray I had already seen on Friday night smote towards Chertsey, and struck
+						the town
+					</li>
+
+					<li> At sight of these strange, swift, and terrible creatures the crowd near the water's edge seemed
+						to me to be for a moment horror-struck
+					</li>
+
+					<li>
+						<ul>
+							<li> There was no screaming or shouting, but a silence</li>
+
+							<li> Then a hoarse murmur and a movement of feet&#45;&#45;a splashing from the water</li>
+
+							<li> A man, too frightened to drop the portmanteau he carried on his shoulder, swung round
+								and sent me staggering with a blow from the corner of his burden
+							</li>
+
+							<li> A woman thrust at me with her hand and rushed past me</li>
+
+							<li> I turned with the rush of the people, but I was not too terrified for thought</li>
+
+							<li> The terrible Heat-Ray was in my mind</li>
+						</ul>
+					</li>
+
+					<li> To get under water! That was it! "Get under water!" I shouted, unheeded</li>
+
+					<li> I faced about again, and rushed towards the approaching Martian, rushed right down the gravelly
+						beach and headlong into the water
+					</li>
+
+					<li> Others did the same</li>
+				</ul>
+
+				<h3 class="style-guide__section__subtitle">Ordered List</h3>
+				<ol>
+					<li>Then, advancing obliquely towards us, came a fifth</li>
+
+					<li> Their armoured bodies glittered in the sun as they swept swiftly forward upon the guns, growing
+						rapidly larger as they drew nearer
+					</li>
+
+					<li> One on the extreme left, the remotest that is, flourished a huge case high in the air, and the
+						ghostly, terrible Heat-Ray I had already seen on Friday night smote towards Chertsey, and struck
+						the town
+					</li>
+
+					<li> At sight of these strange, swift, and terrible creatures the crowd near the water's edge seemed
+						to me to be for a moment horror-struck
+					</li>
+
+					<li>
+						<ul>
+							<li> There was no screaming or shouting, but a silence</li>
+
+							<li> Then a hoarse murmur and a movement of feet&#45;&#45;a splashing from the water</li>
+
+							<li> A man, too frightened to drop the portmanteau he carried on his shoulder, swung round
+								and sent me staggering with a blow from the corner of his burden
+							</li>
+
+							<li> A woman thrust at me with her hand and rushed past me</li>
+
+							<li> I turned with the rush of the people, but I was not too terrified for thought</li>
+
+							<li> The terrible Heat-Ray was in my mind</li>
+						</ul>
+					</li>
+
+					<li> To get under water! That was it! "Get under water!" I shouted, unheeded</li>
+
+					<li> I faced about again, and rushed towards the approaching Martian, rushed right down the gravelly
+						beach and headlong into the water
+					</li>
+
+					<li> Others did the same</li>
+				</ol>
+
+				<h3 class="style-guide__section__subtitle">Unstyled List</h3>
+				<ul class="list-unstyled">
+					<li>Then, advancing obliquely towards us, came a fifth</li>
+
+					<li> Their armoured bodies glittered in the sun as they swept swiftly forward upon the guns, growing
+						rapidly larger as they drew nearer
+					</li>
+
+					<li> One on the extreme left, the remotest that is, flourished a huge case high in the air, and the
+						ghostly, terrible Heat-Ray I had already seen on Friday night smote towards Chertsey, and struck
+						the town
+					</li>
+
+					<li> At sight of these strange, swift, and terrible creatures the crowd near the water's edge seemed
+						to me to be for a moment horror-struck
+					</li>
+
+					<li>
+						<ul>
+							<li> There was no screaming or shouting, but a silence</li>
+
+							<li> Then a hoarse murmur and a movement of feet&#45;&#45;a splashing from the water</li>
+
+							<li> A man, too frightened to drop the portmanteau he carried on his shoulder, swung round
+								and sent me staggering with a blow from the corner of his burden
+							</li>
+
+							<li> A woman thrust at me with her hand and rushed past me</li>
+
+							<li> I turned with the rush of the people, but I was not too terrified for thought</li>
+
+							<li> The terrible Heat-Ray was in my mind</li>
+						</ul>
+					</li>
+
+					<li> To get under water! That was it! "Get under water!" I shouted, unheeded</li>
+
+					<li> I faced about again, and rushed towards the approaching Martian, rushed right down the gravelly
+						beach and headlong into the water
+					</li>
+
+					<li> Others did the same</li>
+				</ul>
+
+				<h3 class="style-guide__section__subtitle">Inline List</h3>
+				<ul class="list-inline">
+					<li>Lorem ipsum</li>
+					<li>Phasellus iaculis</li>
+					<li>Nulla volutpat</li>
+				</ul>
+
+				<h3 class="style-guide__section__subtitle">Description List</h3>
+				<dl>
+					<dt>Description lists</dt>
+					<dd>A description list is perfect for defining terms.</dd>
+					<dt>Euismod</dt>
+					<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+					<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+					<dt>Malesuada porta</dt>
+					<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+				</dl>
+
+				<h3 class="style-guide__section__subtitle">Horizontal Description List</h3>
+				<dl class="dl-horizontal">
+					<dt>Description lists</dt>
+					<dd>A description list is perfect for defining terms.</dd>
+					<dt>Euismod</dt>
+					<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+					<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+					<dt>Malesuada porta</dt>
+					<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+				</dl>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="list-groups">
+			<h2 class="style-guide__section__title">List Groups</h2>
+			<div class="style-guide__section__body">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<span class="badge">136</span> Cras justo odio
+					</li>
+					<li class="list-group-item"><span class="badge">14</span> Dapibus ac facilisis in</li>
+					<li class="list-group-item"><span class="badge">7</span> Morbi leo risus</li>
+					<li class="list-group-item"><span
+						class="badge">7</span> Ahab stolidly turned aside; then said to
+						Mayhew, "Captain, I have just bethought me of my letter-bag; there is a letter for one of thy
+						officers, if I mistake not
+					</li>
+					<li class="list-group-item active"><span class="badge">7</span>Active Group Item</li>
+					<li class="list-group-item">Every whale-ship takes out a goodly number of letters for various ships,
+						whose delivery to the persons to whom they may be addressed, depends upon the mere chance of
+						encountering them in the four oceans
+					</li>
+					<li class="list-group-item list-group-item-success"><span
+						class="badge">7</span>Success Group Item
+					</li>
+					<li class="list-group-item list-group-item-info"><span class="badge">7</span>Info Group Item
+					</li>
+					<li class="list-group-item list-group-item-warning"><span
+						class="badge">7</span>Warning Group Item
+					</li>
+					<li class="list-group-item list-group-item-danger"><span class="badge">7</span>Danger Group Item
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="style-guide__section container" id="code">
+			<h2 class="style-guide__section__title">Code</h2>
+			<div class="style-guide__section__body">
+
+				<p>Inline code should be written using the <code>&lt;code&gt;</code> tag, for example
+					<code>alert('hello world!');</code></p>
+
+				<h3 class="style-guide__section__subtitle">Pre Tags (Multiline Code)</h3>
+				<pre>
+    // Longer code snippets should use the &lt;pre&gt; tag
+    function hello() {
+        alert('hello world!');
+    }
+                        </pre>
+			</div>
+		</section>
+	</div>
+</div>

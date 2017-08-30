@@ -1,0 +1,134 @@
+.style-guide {
+	&__content {
+		> * + * {
+			margin-top:$site-gutter;
+			padding-top:$site-gutter;
+			border-top:$site-border;
+		}
+	}
+
+	&__section {
+		border:1px solid $gray-light;
+		padding:$site-gutter;
+
+		&__title, &__subtitle {
+			border-bottom:$site-border;
+			margin-bottom:$site-gutter;
+			padding-bottom:$site-spacing;
+
+			&:not(:first-child) {
+				margin-top:$site-gutter;
+			}
+		}
+
+		&__title {
+			margin-top:0;
+			border-width: 2px;
+		}
+
+		&__content {
+
+		}
+
+		$section:&;
+		&#colors {
+			& #{$section}__body {
+				display:flex;
+				align-items:flex-start;
+				flex-wrap:wrap;
+				justify-content:space-around;
+			}
+
+			.color-swatch {
+				flex:0 0 60px;
+				margin-bottom: $site-gutter;
+				display:flex;
+				flex-direction:column;
+				align-items:center;
+				padding:0 $site-spacing;
+
+				> * + * {
+					margin-top:$site-spacing;
+				}
+
+				&__swatch {
+					$size:50px;
+					width:$size;
+					height:$size;
+					border-radius:$size/2;
+				}
+
+				&__label {
+					text-align:center;
+				}
+
+				@media screen and (max-width:$screen-xs-max) {
+					flex-basis:100px;
+				}
+			}
+
+			@include color-swatch-variant('black',$black);
+			@include color-swatch-variant('white',$white);
+			@include color-swatch-variant('red',$red);
+			@include color-swatch-variant('orange',$orange);
+			@include color-swatch-variant('blue',$blue);
+			@include color-swatch-variant('green',$green);
+			@include color-swatch-variant('blue-light',$blue-light);
+			@include color-swatch-variant('gray-darker',$gray-darker);
+			@include color-swatch-variant('gray-dark',$gray-dark);
+			@include color-swatch-variant('gray',$gray);
+			@include color-swatch-variant('gray-light',$gray-light);
+			@include color-swatch-variant('gray-lighter',$gray-lighter);
+			@include color-swatch-variant('brand-primary',$brand-primary);
+			@include color-swatch-variant('brand-success',$brand-success);
+			@include color-swatch-variant('brand-info',$brand-info);
+			@include color-swatch-variant('brand-warning',$brand-warning);
+			@include color-swatch-variant('brand-danger',$brand-danger);
+		}
+	}
+
+	&__dropdown-group, &__button-row {
+		display:flex;
+		flex-wrap:wrap;
+
+		> * {
+			margin-right:$site-padding;
+			margin-bottom:$site-padding;
+		}
+	}
+
+	&__icons {
+		list-style:none;
+		padding:0;
+		display:flex;
+		justify-content: space-between;
+		flex-wrap:wrap;
+	}
+
+	&__icon {
+		margin:0;
+		display:flex;
+		align-items:center;
+		margin-bottom:$site-gutter;
+		margin-right:$site-padding;
+		flex:0 0 150px;
+
+		> * + * {
+			margin-left:$site-spacing;
+		}
+
+		&__glyph {
+			font-size:2em;
+		}
+	}
+
+	.btn, .panel-heading {
+		text-transform: capitalize;
+	}
+
+	.carousel-inner {
+		img {
+			@include responsive-image();
+		}
+	}
+}
