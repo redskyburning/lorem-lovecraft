@@ -9,7 +9,6 @@ let webpack = require('webpack-stream');
 
 let $ = require('gulp-load-plugins')();
 
-
 function webpackWrapper(watch, test, callback) {
   let webpackOptions = {
     watch: watch,
