@@ -1,7 +1,12 @@
 {
   "name": "ipsum",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "epub": "^0.1.6",
+    "gulp-debug": "^3.1.0",
+    "gulp-transform": "^3.0.5",
+    "through2": "^2.0.3"
+  },
   "scripts": {
     "test": "gulp test"
   },
