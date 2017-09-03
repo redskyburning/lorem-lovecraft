@@ -16,18 +16,35 @@ function convertEpubToJson() {
 		});
 
 		epub.on('end',(error) => {
-			$.util.log('flow:',epub.flow);
-
 			if(!error) {
-				callback(null,file);
-			} else {
-				return callback(error);
-			}
+				epub.getChapter(epub.flow[0].id,(error,chapterText) => {
+					$.util.log(chapterText);
+				});
 
+				/*epub.flow.forEach((chapter,i) => {
+					if(i === 0){
+						epub.getChapter(chapter.id,(error,chapterText) => {
+							if(!error) {
+								$.util.log(chapterText);
+								//callback(null,file);
+							} else {
+								//callback(error);
+							}
+						});
+					} else {
+						callback(null,file);
+					}
+				});
+
+
+
+				callback(null,file);*/
+			} else {
+				callback(error);
+			}
 		});
 
 		epub.parse();
-		$.util.log('contact at end');
 	});
 }
 
