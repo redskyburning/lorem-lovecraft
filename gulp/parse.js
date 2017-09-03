@@ -1,56 +1,43 @@
 'use strict';
 
-let path    = require('path');
-let gulp    = require('gulp');
-let conf    = require('./conf');
-let Epub    = require('epub');
-let $       = require('gulp-load-plugins')();
+let path     = require('path');
+let gulp     = require('gulp');
+let conf     = require('./conf');
+let $        = require('gulp-load-plugins')();
 let through2 = require('through2');
 
-function convertEpubToJson() {
+function convertToJson() {
 	return through2.obj(function(file, encoding, callback) {
-		let epub = new Epub(file.path);
+		const targetString = '***target***';
+		let textArray      = [];
 
-		epub.on('error',(error) => {
-			callback(error);
-		});
+		String(file.contents)
+			.split(/[\n]{2,}/)
+			.forEach((paragraph) => {
+				let paragraphArray = [];
 
-		epub.on('end',(error) => {
-			if(!error) {
-				epub.getChapter(epub.flow[0].id,(error,chapterText) => {
-					$.util.log(chapterText);
-				});
+				paragraph.replace(/([a-z]\.)\s/g, `$1${targetString}`)
+					.split(targetString)
+					.forEach((sentence) => {
+						if (sentence) {
+							paragraphArray.push(sentence);
+						}
+					});
 
-				/*epub.flow.forEach((chapter,i) => {
-					if(i === 0){
-						epub.getChapter(chapter.id,(error,chapterText) => {
-							if(!error) {
-								$.util.log(chapterText);
-								//callback(null,file);
-							} else {
-								//callback(error);
-							}
-						});
-					} else {
-						callback(null,file);
-					}
-				});
+				textArray.push(paragraphArray);
+			});
 
-
-
-				callback(null,file);*/
-			} else {
-				callback(error);
-			}
-		});
-
-		epub.parse();
+		file.contents = new Buffer(JSON.stringify(textArray));
+		callback(null, file);
 	});
 }
 
 gulp.task('parse', [], function() {
-	return gulp.src([path.join(conf.paths.bookSrc, '/**/*.epub')])
-		.pipe(convertEpubToJson())
+	return gulp.src([path.join(conf.paths.bookSrc, '/**/*.txt')])
+		.pipe(convertToJson())
+		.pipe($.rename({
+			extname: '.json'
+		}))
 		.pipe($.debug())
 		.pipe(gulp.dest(conf.paths.bookOutput));
 });
