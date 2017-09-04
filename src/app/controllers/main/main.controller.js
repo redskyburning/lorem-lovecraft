@@ -1,9 +1,16 @@
 export class MainController {
-  constructor ($log) {
-    'ngInject';
+	constructor($log, bookService) {
+		'ngInject';
 
-    this.$log = $log;
+		this.$log        = $log;
+		this.bookService = bookService;
 
-    this.foo = 'bar';
-  }
+		this.bookService.getRandomBook()
+			.then((manifest) => {
+				this.$log.warn('manifest', manifest);
+			})
+			.catch((error) => {
+				this.$log.error(error);
+			});
+	}
 }

@@ -11,6 +11,7 @@ import {StyleGuideController} from './controllers/style-guide/style-guide.contro
 import {StyleGuideModalController} from './controllers/style-guide-modal/style-guide-modal.controller';
 import {ErrorController} from './controllers/error/error.controller';
 /* controller import injection target */
+import {BookService} from './components/book/book.service';
 /* service import injection target */
 /* factory import injection target */
 /* provider import injection target */
@@ -26,6 +27,7 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.run(runBlock)
 	/* constant injection target */
 	/* model injection target */
+	.service('bookService', BookService)
 	/* service injection target */
 	/* factory injection target */
 	/* provider injection target */
