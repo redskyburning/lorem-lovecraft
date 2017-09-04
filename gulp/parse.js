@@ -31,12 +31,10 @@ function convertToJson() {
 						// Add the sentence only if it's a valid string with word-y letters (excludes decorative stuff like * * *) and isn't just roman numerals (excludes roman numeral chapter headings).
 						if (typeof sentence === 'string' && sentence.search(/\w/) > -1 && sentence.search(romanRegex) === -1) {
 							paragraphArray.push(sentence);
-						} else {
-							$.util.log('rejected!',sentence);
 						}
 					});
 
-				// It's possible we've filtered
+				// It's possible we've filtered out all the sentences. Don't push empty paragraphs.
 				if(paragraphArray.length > 0){
 					textArray.push(paragraphArray);
 				}
