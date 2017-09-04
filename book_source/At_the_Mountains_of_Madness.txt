@@ -1,3 +1,9 @@
+---
+title: 'At the Mountains of Maddness'
+author: 'HP Lovecraft'
+source: 'https://en.wikisource.org/wiki/At_the_Mountains_of_Madness'
+year: 1936
+---
 I.
 
 

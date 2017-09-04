@@ -26,7 +26,9 @@ export class BookService {
 
                 response.data.forEach((bookData) => {
                   manifest.push({
-                    path: bookData.path || null
+                    path: bookData.path || null,
+                    title: bookData.title || null,
+                    key: bookData.key || null
                   });
                 });
 

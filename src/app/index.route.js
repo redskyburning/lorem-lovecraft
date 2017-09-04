@@ -36,7 +36,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'vm'
     })
     .state('main.book', {
-			url         : 'book',
+			url         : 'book/:key',
 			templateUrl : 'app/controllers/book/book.html',
 			controller  : 'BookController',
 			controllerAs: 'vm'
