@@ -1,0 +1,6 @@
+<div class="random-book container">
+	<h1>Random Passage</h1>
+	<p ng-repeat="paragraph in vm.paragraphs" ng-class="{ lead : $first }">
+		<span ng-repeat="sentence in paragraph">{{sentence}}</span>
+	</p>
+</div>

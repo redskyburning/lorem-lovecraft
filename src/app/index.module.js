@@ -6,10 +6,12 @@ import {runBlock} from './index.run';
 import {MainController} from './controllers/main/main.controller';
 import {HomeController} from './controllers/home/home.controller';
 /* constant import injection target */
+import {BookModel} from './components/book/book.model';
 /* model import injection target */
 import {StyleGuideController} from './controllers/style-guide/style-guide.controller';
 import {StyleGuideModalController} from './controllers/style-guide-modal/style-guide-modal.controller';
 import {ErrorController} from './controllers/error/error.controller';
+import {RandomBookController} from './controllers/random-book/random-book.controller';
 /* controller import injection target */
 import {BookService} from './components/book/book.service';
 /* service import injection target */
@@ -26,6 +28,7 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.config(routerConfig)
 	.run(runBlock)
 	/* constant injection target */
+	.constant('BookModel', BookModel)
 	/* model injection target */
 	.service('bookService', BookService)
 	/* service injection target */
@@ -38,5 +41,6 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.controller('StyleGuideController', StyleGuideController)
 	.controller('StyleGuideModalController', StyleGuideModalController)
 	.controller('ErrorController', ErrorController)
+	.controller('RandomBookController', RandomBookController)
 	/* controller injection target */
 	.controller('MainController', MainController);

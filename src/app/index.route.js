@@ -8,6 +8,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
 			controller  : 'MainController',
 			controllerAs: 'main'
 		})
+		.state('main.random-book', {
+			url         : 'random-book',
+			templateUrl : 'app/controllers/random-book/random-book.html',
+			controller  : 'RandomBookController',
+			controllerAs: 'vm'
+		})
 		/* route injection target */
 		.state('main.error', {
 			url         : 'error',

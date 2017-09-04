@@ -1,10 +1,11 @@
 export class BookService {
-	constructor($log, $http, $q) {
+	constructor($log, $http, $q, BookModel) {
 		'ngInject';
 
-		this.$log  = $log;
-		this.$http = $http;
-		this.$q    = $q;
+		this.$log      = $log;
+		this.$http     = $http;
+		this.$q        = $q;
+		this.BookModel = BookModel;
 
 		this.basePath        = '/books';
 		this.manifestPromise = null;
@@ -19,14 +20,14 @@ export class BookService {
 			this.$http.get(`${this.basePath}/manifest.json`)
 				.then((response) => {
 					if (response && angular.isArray(response.data)) {
-						if(response.data.length > 0){
+						if (response.data.length > 0) {
 							resolve(response.data);
 						} else {
 							reject('Empty manifest in getManifest()');
 						}
 					} else {
 						let message = 'Malformed response in getManifest()';
-						this.$log.error(message,response);
+						this.$log.error(message, response);
 						reject(message);
 					}
 					resolve(response)
@@ -38,11 +39,12 @@ export class BookService {
 	}
 
 	getBookByFilename(filename) {
-		return this.$q((resolve,reject) => {
+		return this.$q((resolve, reject) => {
 			this.$http.get(`${this.basePath}/${filename}`)
 				.then((response) => {
 					if (response && response.data) {
-						resolve(response.data);
+						let book = new this.BookModel(response.data);
+						resolve(book);
 					} else {
 						let message = `Malformed response in getTextByFilename('${filename}')`;
 						this.$log.error(message);
@@ -57,7 +59,7 @@ export class BookService {
 	}
 
 	getRandomBook() {
-		return this.$q((resolve,reject) => {
+		return this.$q((resolve, reject) => {
 			this.getManifest()
 				.then((manifest) => {
 					let randomIndex = Math.floor(Math.random() * manifest.length);
