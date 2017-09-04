@@ -13,6 +13,8 @@ import {StyleGuideModalController} from './controllers/style-guide-modal/style-g
 import {ErrorController} from './controllers/error/error.controller';
 import {RandomBookController} from './controllers/random-book/random-book.controller';
 import {RandomWordsController} from './controllers/random-words/random-words.controller';
+import {SidebarController} from './controllers/sidebar/sidebar.controller';
+import {BookController} from './controllers/book/book.controller';
 /* controller import injection target */
 import {BookService} from './components/book/book.service';
 /* service import injection target */
@@ -47,5 +49,7 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.controller('ErrorController', ErrorController)
 	.controller('RandomBookController', RandomBookController)
 	.controller('RandomWordsController', RandomWordsController)
+	.controller('SidebarController', SidebarController)
+	.controller('BookController', BookController)
 	/* controller injection target */
 	.controller('MainController', MainController);

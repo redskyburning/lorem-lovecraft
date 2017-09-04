@@ -7,9 +7,6 @@ body {
 	display:flex;
 	flex-direction:column;
 
-	&__wrapper {
-	}
-
 	&__nav {
 		margin-bottom:0;
 		font-family:$headings-font-family;
@@ -27,15 +24,29 @@ body {
 		}
 	}
 
+    &__body {
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        padding:0;
+
+        > * + * {
+            margin-left:$site-gutter;
+        }
+    }
+
 	&__view {
-		flex:1 0 auto;
+		flex:1 1 auto;
+        background-color:$white;
+        padding:0 $site-gutter;
 
 		> * {
 			min-height:100vh;
 		}
-
-        .container {
-            background-color:$white;
-        }
 	}
+
+    &__sidebar {
+        width:250px;
+        flex:0 0 auto;
+    }
 }
