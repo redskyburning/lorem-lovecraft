@@ -5,7 +5,5 @@
 			<button class="btn btn-default" ng-click="vm.randomize()">Randomize!</button>
 		</div>
 	</div>
-	<p ng-repeat="paragraph in vm.paragraphs" ng-class="{ lead : $first }">
-		<span ng-repeat="sentence in paragraph">{{sentence}} </span>
-	</p>
+    <passage class="random-book__passage" paragraphs="vm.paragraphs"></passage>
 </div>

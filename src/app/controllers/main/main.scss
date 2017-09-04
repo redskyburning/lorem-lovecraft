@@ -1,5 +1,6 @@
 body {
 	min-height:100vh;
+    background-color:$gray-lighter;
 }
 
 .main {
@@ -32,5 +33,9 @@ body {
 		> * {
 			min-height:100vh;
 		}
+
+        .container {
+            background-color:$white;
+        }
 	}
 }

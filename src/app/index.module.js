@@ -19,6 +19,7 @@ import {BookService} from './components/book/book.service';
 /* factory import injection target */
 /* provider import injection target */
 /* directive import injection target */
+import {PassageComponent} from './components/passage/passage.component';
 /* component import injection target */
 /* filter import injection target */
 /* module import injection target */
@@ -37,6 +38,7 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	/* factory injection target */
 	/* provider injection target */
 	/* directive injection target */
+	.component('passage', PassageComponent)
 	/* component injection target */
 	/* filter injection target */
 	.controller('HomeController', HomeController)

@@ -94,7 +94,7 @@ export class BookService {
       sentences.forEach((sentence) => {
         sentence    = sentence.replace(/^"*(.+)[.,?!;]"*$/, '$1') // Trim quotes and punctuation
                               .split(/[.,?!;]*\s/); // Split on [punctuation +] space
-        sentence[0] = sentence[0].toLowerCase(); // Decapitalize first letter.
+        sentence[0] = this.changeFirstCase(sentence[0], false); // Decapitalize first letter.
         words       = words.concat(sentence);
       });
     });
@@ -122,6 +122,7 @@ export class BookService {
       for (let sI = 0; sI < options.sentencesPer; sI++) {
         let sentence = wordpool.splice(0, options.wordsPer).join(' ');
         sentence += this.getRandomPunctuation();
+        sentence = this.changeFirstCase(sentence,true);
         sentances.push(sentence);
       }
 
@@ -134,5 +135,10 @@ export class BookService {
   getRandomPunctuation() {
     let marks = ['.', '!', '?'];
     return marks[Math.floor(marks.length * Math.random())];
+  }
+
+  changeFirstCase(string,toUpperNotLower = true) {
+    let first = toUpperNotLower ? string.charAt(0).toUpperCase() : string.charAt(0).toLowerCase();
+    return first + string.slice(1);
   }
 }

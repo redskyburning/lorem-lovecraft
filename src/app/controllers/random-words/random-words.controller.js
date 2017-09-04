@@ -1,5 +1,5 @@
 export class RandomWordsController {
-	constructor($log, bookService, knuthShuffle) {
+	constructor($log, bookService) {
 		'ngInject';
 
 		this.$log         = $log;

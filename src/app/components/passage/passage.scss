@@ -1,0 +1,25 @@
+.passage {
+    $root:&;
+
+    &__paragraph {
+        &:first-of-type {
+            $lead-font-size:floor(($font-size-base * 1.4));
+            $first-line-size:floor($lead-font-size * 1.8);
+            $first-line-height:$first-line-size * $line-height-base;
+            font-size: $lead-font-size;
+
+            &:first-line {
+                font-size:$first-line-size;
+                line-height:$first-line-height;
+            }
+
+            &:first-letter {
+                font-size:floor($first-line-size * 2);
+                line-height:$first-line-height;
+            }
+        }
+    }
+
+    &__sentence {
+    }
+}
