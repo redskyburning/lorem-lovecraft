@@ -1,1 +1,5 @@
-["the-call-of-cthulhu.json","at-the-mountains-of-madness.json"]
+[{
+    "path": "at-the-mountains-of-madness.json"
+}, {
+    "path": "the-call-of-cthulhu.json"
+}]

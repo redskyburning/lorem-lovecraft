@@ -21,7 +21,15 @@ export class BookService {
 				.then((response) => {
 					if (response && angular.isArray(response.data)) {
 						if (response.data.length > 0) {
-							resolve(response.data);
+							let manifest = [];
+
+							response.data.forEach((bookData) => {
+								manifest.push({
+									path : bookData.path || null
+								});
+							});
+
+							resolve(manifest);
 						} else {
 							reject('Empty manifest in getManifest()');
 						}
@@ -63,7 +71,7 @@ export class BookService {
 			this.getManifest()
 				.then((manifest) => {
 					let randomIndex = Math.floor(Math.random() * manifest.length);
-					this.getBookByFilename(manifest[randomIndex])
+					this.getBookByFilename(manifest[randomIndex].path)
 						.then((book) => {
 							resolve(book);
 						})
