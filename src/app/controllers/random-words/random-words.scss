@@ -1,0 +1,14 @@
+.random-words {
+	&__header {
+		display:flex;
+		justify-content: space-between;
+		align-items:center;
+		border-bottom:3px solid $gray-darker;
+		padding:$site-gutter 0 $site-spacing;
+		margin-bottom:$site-gutter;
+	}
+
+	&__title {
+		margin:0;
+	}
+}

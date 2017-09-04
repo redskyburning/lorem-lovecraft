@@ -1,4 +1,4 @@
-/* global moment:false */
+/* global moment:false knuthShuffle:false */
 
 import {config} from './index.config';
 import {routerConfig} from './index.route';
@@ -12,6 +12,7 @@ import {StyleGuideController} from './controllers/style-guide/style-guide.contro
 import {StyleGuideModalController} from './controllers/style-guide-modal/style-guide-modal.controller';
 import {ErrorController} from './controllers/error/error.controller';
 import {RandomBookController} from './controllers/random-book/random-book.controller';
+import {RandomWordsController} from './controllers/random-words/random-words.controller';
 /* controller import injection target */
 import {BookService} from './components/book/book.service';
 /* service import injection target */
@@ -24,6 +25,7 @@ import {BookService} from './components/book/book.service';
 
 angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap'/* module injection target */])
 	.constant('moment', moment)
+	.constant('knuthShuffle', knuthShuffle)
 	.config(config)
 	.config(routerConfig)
 	.run(runBlock)
@@ -42,5 +44,6 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.controller('StyleGuideModalController', StyleGuideModalController)
 	.controller('ErrorController', ErrorController)
 	.controller('RandomBookController', RandomBookController)
+	.controller('RandomWordsController', RandomWordsController)
 	/* controller injection target */
 	.controller('MainController', MainController);

@@ -14,6 +14,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
 			controller  : 'RandomBookController',
 			controllerAs: 'vm'
 		})
+		.state('main.random-words', {
+			url         : 'random-words',
+			templateUrl : 'app/controllers/random-words/random-words.html',
+			controller  : 'RandomWordsController',
+			controllerAs: 'vm'
+		})
 		/* route injection target */
 		.state('main.error', {
 			url         : 'error',
