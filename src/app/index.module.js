@@ -16,6 +16,7 @@ import {RandomWordsController} from './controllers/random-words/random-words.con
 import {SidebarController} from './controllers/sidebar/sidebar.controller';
 import {BookController} from './controllers/book/book.controller';
 import {PassageController} from './controllers/passage/passage.controller';
+import {RamblingsController} from './controllers/ramblings/ramblings.controller';
 /* controller import injection target */
 import {BookService} from './components/book/book.service';
 /* service import injection target */
@@ -53,5 +54,6 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.controller('SidebarController', SidebarController)
 	.controller('BookController', BookController)
 	.controller('PassageController', PassageController)
+	.controller('RamblingsController', RamblingsController)
 	/* controller injection target */
 	.controller('MainController', MainController);

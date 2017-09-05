@@ -52,6 +52,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller  : 'PassageController',
       controllerAs: 'vm'
     })
+		.state('main.book.ramblings', {
+			url         : '/ramblings',
+			templateUrl : 'app/controllers/ramblings/ramblings.html',
+			controller  : 'RamblingsController',
+			controllerAs: 'vm'
+		})
 		/* route injection target */
     .state('main.error', {
       url         : 'error',

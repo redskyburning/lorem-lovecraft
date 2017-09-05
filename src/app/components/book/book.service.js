@@ -58,14 +58,14 @@ export class BookService {
       this.getManifest()
           .then((manifest) => {
             if (manifest[key]) {
-              if(manifest[key].path){
+              if (manifest[key].path) {
                 this.getBookByFilename(manifest[key].path)
-                  .then((book) => {
-                    resolve(book);
-                  })
-                  .catch((error) => {
-                    reject(error);
-                  });
+                    .then((book) => {
+                      resolve(book);
+                    })
+                    .catch((error) => {
+                      reject(error);
+                    });
               } else {
                 reject(`No path found for book with key '${key}'`);
               }
@@ -137,7 +137,8 @@ export class BookService {
       paragraphCount: 8,
       sentencesPer  : 8,
       wordsPer      : 10,
-      wordMin       : 4
+      wordMin       : 4,
+      seed          : Math.random()
     };
 
     options        = Object.assign({}, defaultOptions, options);
