@@ -38,4 +38,10 @@ body {
 			min-height:100vh;
 		}
 	}
+
+    &__footer {
+        background:$gray-darker;
+        color:$white;
+        padding:$site-padding $site-gutter;
+    }
 }

@@ -46,7 +46,13 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    /* route injection target */
+    .state('main.book.passage', {
+      url         : '/passage',
+      templateUrl : 'app/controllers/passage/passage.html',
+      controller  : 'PassageController',
+      controllerAs: 'vm'
+    })
+		/* route injection target */
     .state('main.error', {
       url         : 'error',
       templateUrl : 'app/controllers/error/error.html',
