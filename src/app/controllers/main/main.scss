@@ -7,6 +7,7 @@ body {
 .main {
 	display:flex;
 	flex-direction:column;
+    height:100%;
 
 	&__nav {
 		margin-bottom:0;
