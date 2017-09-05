@@ -2,10 +2,10 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
   'ngInject';
   $stateProvider
     .state('main', {
-      url         : '/',
-      abstract    : true,
-      views       : {
-        '' : {
+      url     : '/',
+      abstract: true,
+      views   : {
+        ''            : {
           templateUrl : 'app/controllers/main/main.html',
           controller  : 'MainController',
           controllerAs: 'main'
@@ -29,19 +29,21 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller  : 'RandomWordsController',
       controllerAs: 'vm'
     })
-    .state('main.sidebar', {
-      url         : 'sidebar',
-      templateUrl : 'app/controllers/sidebar/sidebar.html',
-      controller  : 'SidebarController',
-      controllerAs: 'vm'
-    })
     .state('main.book', {
-			url         : 'book/:key',
-			templateUrl : 'app/controllers/book/book.html',
-			controller  : 'BookController',
-			controllerAs: 'vm'
-		})
-		/* route injection target */
+      url         : 'book/:key?seed',
+      templateUrl : 'app/controllers/book/book.html',
+      controller  : 'BookController',
+      controllerAs: 'vm',
+      resolve     : {
+        manifest : (bookService) => {
+          return bookService.getManifest();
+        },
+        book: ($stateParams,bookService) => {
+          return bookService.getBookByKey($stateParams.key);
+        }
+      }
+    })
+    /* route injection target */
     .state('main.error', {
       url         : 'error',
       templateUrl : 'app/controllers/error/error.html',

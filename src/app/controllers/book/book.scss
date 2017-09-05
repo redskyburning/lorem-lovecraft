@@ -1,0 +1,36 @@
+.book {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:flex-start;
+    padding:0;
+
+    > * + * {
+        margin-left:$site-gutter;
+    }
+
+    &__main {
+        flex:1 1 auto;
+    }
+
+    &__sidebar {
+        width:275px;
+        flex:0 0 auto;
+        padding:$site-gutter 0;
+        position:sticky;
+        top:10px;
+    }
+
+    &__header {
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        border-bottom:3px solid $gray-darker;
+        padding:$site-gutter 0 $site-spacing;
+        margin-bottom:$site-gutter;
+    }
+
+    &__title {
+        margin:0;
+    }
+}

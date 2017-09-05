@@ -1,0 +1,34 @@
+<div class="book">
+
+    <div class="book__sidebar">
+        <form class="form">
+            <div class="form-group">
+                <label class="control-label">Current Book:</label>
+                <select class="form-control"
+                        ng-model="vm.selectedBookKey"
+                        ng-change="vm.changeBook()"
+                        ng-options="book.key as book.title for book in vm.manifest"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Seed:</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" ng-model="vm.seed" />
+                    <a class="input-group-addon btn btn-default"
+                       ng-click="vm.randomizeSeed()">
+                        <span class="glyphicon glyphicon-refresh"></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="book__main">
+        <div class="book__header">
+            <h1 class="book__title">Random Passage</h1>
+            <div class="book__actions">
+                <button class="btn btn-default" ng-click="vm.randomize()">Randomize!</button>
+            </div>
+        </div>
+        <passage class="book__passage" paragraphs="vm.passage"></passage>
+    </div>
+</div>

@@ -22,14 +22,18 @@ export class BookService {
           .then((response) => {
             if (response && angular.isArray(response.data)) {
               if (response.data.length > 0) {
-                let manifest = [];
+                let manifest = {};
 
                 response.data.forEach((bookData) => {
-                  manifest.push({
-                    path: bookData.path || null,
-                    title: bookData.title || null,
-                    key: bookData.key || null
-                  });
+                  if (bookData.key && bookData.path) {
+                    manifest[bookData.key] = {
+                      path : bookData.path || null,
+                      title: bookData.title || null,
+                      key  : bookData.key || null
+                    };
+                  } else {
+                    this.$log.warn('Incomplete meta in manifest', bookData);
+                  }
                 });
 
                 resolve(manifest);
@@ -46,6 +50,29 @@ export class BookService {
           .catch((error) => {
             reject(error);
           });
+    });
+  }
+
+  getBookByKey(key) {
+    return this.$q((resolve, reject) => {
+      this.getManifest()
+          .then((manifest) => {
+            if (manifest[key]) {
+              if(manifest[key].path){
+                this.getBookByFilename(manifest[key].path)
+                  .then((book) => {
+                    resolve(book);
+                  })
+                  .catch((error) => {
+                    reject(error);
+                  });
+              } else {
+                reject(`No path found for book with key '${key}'`);
+              }
+            } else {
+              reject(`Book with key '${key}' not found.`);
+            }
+          })
     });
   }
 
@@ -73,8 +100,9 @@ export class BookService {
     return this.$q((resolve, reject) => {
       this.getManifest()
           .then((manifest) => {
-            let randomIndex = Math.floor(Math.random() * manifest.length);
-            this.getBookByFilename(manifest[randomIndex].path)
+            let keys      = Object.keys(manifest);
+            let randomKey = keys[Math.floor(Math.random() * keys.length)];
+            this.getBookByFilename(manifest[randomKey].path)
                 .then((book) => {
                   resolve(book);
                 })
@@ -124,7 +152,7 @@ export class BookService {
       for (let sI = 0; sI < options.sentencesPer; sI++) {
         let sentence = wordpool.splice(0, options.wordsPer).join(' ');
         sentence += this.getRandomPunctuation();
-        sentence = this.changeFirstCase(sentence,true);
+        sentence     = this.changeFirstCase(sentence, true);
         sentances.push(sentence);
       }
 
@@ -139,7 +167,7 @@ export class BookService {
     return marks[Math.floor(marks.length * Math.random())];
   }
 
-  changeFirstCase(string,toUpperNotLower = true) {
+  changeFirstCase(string, toUpperNotLower = true) {
     let first = toUpperNotLower ? string.charAt(0).toUpperCase() : string.charAt(0).toLowerCase();
     return first + string.slice(1);
   }
