@@ -30,10 +30,13 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controllerAs: 'vm'
     })
     .state('main.book', {
-      url         : 'book/:key?seed',
+      url         : 'book/:key/:seed',
       templateUrl : 'app/controllers/book/book.html',
       controller  : 'BookController',
       controllerAs: 'vm',
+      params: {
+        seed : '1'
+      },
       resolve     : {
         manifest : (bookService) => {
           return bookService.getManifest();

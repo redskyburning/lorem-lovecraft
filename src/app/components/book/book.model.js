@@ -8,7 +8,7 @@ export class BookModel {
     let maxLength     = this.getMaxLength();
     length            = maxLength < length ? maxLength : length;
     let maxStartIndex = this.getMaxStartIndexForLength(length);
-    startIndex        = startIndex > maxStartIndex ? maxStartIndex : startIndex;
+    startIndex        = startIndex > maxStartIndex ? maxStartIndex : Number(startIndex);
 
     return this.paragraphs.slice(startIndex, startIndex + length);
   }
