@@ -11,8 +11,6 @@ import {BookModel} from './components/book/book.model';
 import {StyleGuideController} from './controllers/style-guide/style-guide.controller';
 import {StyleGuideModalController} from './controllers/style-guide-modal/style-guide-modal.controller';
 import {ErrorController} from './controllers/error/error.controller';
-import {RandomBookController} from './controllers/random-book/random-book.controller';
-import {RandomWordsController} from './controllers/random-words/random-words.controller';
 import {SidebarController} from './controllers/sidebar/sidebar.controller';
 import {BookController} from './controllers/book/book.controller';
 import {PassageController} from './controllers/passage/passage.controller';
@@ -49,8 +47,6 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.controller('StyleGuideController', StyleGuideController)
 	.controller('StyleGuideModalController', StyleGuideModalController)
 	.controller('ErrorController', ErrorController)
-	.controller('RandomBookController', RandomBookController)
-	.controller('RandomWordsController', RandomWordsController)
 	.controller('SidebarController', SidebarController)
 	.controller('BookController', BookController)
 	.controller('PassageController', PassageController)

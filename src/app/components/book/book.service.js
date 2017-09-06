@@ -61,6 +61,7 @@ export class BookService {
               if (manifest[key].path) {
                 this.getBookByFilename(manifest[key].path)
                     .then((book) => {
+                      book.key = key;
                       resolve(book);
                     })
                     .catch((error) => {
@@ -102,7 +103,7 @@ export class BookService {
           .then((manifest) => {
             let keys      = Object.keys(manifest);
             let randomKey = keys[Math.floor(Math.random() * keys.length)];
-            this.getBookByFilename(manifest[randomKey].path)
+            this.getBookByKey(randomKey)
                 .then((book) => {
                   resolve(book);
                 })

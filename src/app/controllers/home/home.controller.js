@@ -1,9 +1,20 @@
 export class HomeController {
-  constructor ($log) {
+  constructor ($log,bookService) {
     'ngInject';
 
     this.$log = $log;
+    this.bookService = bookService;
 
-    this.foo = 'bar';
+    this.book = null;
+    this.passage = [];
+
+    this.bookService.getRandomBook()
+      .then((book) => {
+        this.book = book;
+        this.passage = book.getRandomParagraphSequence(5)
+      })
+      .catch((error) => {
+        this.$log.error(error);
+      })
   }
 }

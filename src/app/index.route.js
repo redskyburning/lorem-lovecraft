@@ -17,20 +17,8 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    .state('main.random-book', {
-      url         : 'random-book',
-      templateUrl : 'app/controllers/random-book/random-book.html',
-      controller  : 'RandomBookController',
-      controllerAs: 'vm'
-    })
-    .state('main.random-words', {
-      url         : 'random-words',
-      templateUrl : 'app/controllers/random-words/random-words.html',
-      controller  : 'RandomWordsController',
-      controllerAs: 'vm'
-    })
     .state('main.book', {
-      url         : 'book/:key/:seed',
+      url         : 'book/:key/:seed/',
       abstract : true,
       templateUrl : 'app/controllers/book/book.html',
       controller  : 'BookController',

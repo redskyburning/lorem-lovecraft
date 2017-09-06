@@ -1,7 +1,8 @@
 export class BookModel {
 
-  constructor(paragraphs = []) {
+  constructor(paragraphs = [], key) {
     this.paragraphs = paragraphs || [];
+    this.key        = key;
   }
 
   getParagraphSequence(length, startIndex = 0) {
@@ -13,11 +14,11 @@ export class BookModel {
     return this.paragraphs.slice(startIndex, startIndex + length);
   }
 
-  getRandomParagraphSequence(length, seed) {
+  getRandomParagraphSequence(length) {
     let maxLength  = this.getMaxLength();
     length         = maxLength < length ? maxLength : length;
     let maxIndex   = this.getMaxStartIndexForLength(length);
-    let startIndex = Math.floor(maxIndex * seed);
+    let startIndex = Math.floor(maxIndex * Math.random());
 
     return this.getParagraphSequence(length, startIndex);
   }
