@@ -8,6 +8,8 @@ export class RamblingsController {
     this.bookService = bookService;
     this.seed        = $stateParams.seed || null;
 
-    this.passage = this.bookService.getIpsumFromBook(book);
+    this.passage = this.bookService.getIpsumFromBook(book, {
+      seed : this.seed / 1000
+    });
   }
 }

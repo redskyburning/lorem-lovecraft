@@ -116,8 +116,8 @@ export class BookService {
     });
   }
 
-  getWordpoolFromBook(book) {
-    let paragraphs = book.getRandomParagraphSequence(10);
+  getWordpoolFromBook(book,seed) {
+    let paragraphs = book.getRandomParagraphSequence(10,seed);
     let words      = [];
 
     paragraphs.forEach((sentences) => {
@@ -142,7 +142,7 @@ export class BookService {
     };
 
     options        = Object.assign({}, defaultOptions, options);
-    let wordpool   = this.getWordpoolFromBook(book)
+    let wordpool   = this.getWordpoolFromBook(book,options.seed)
                          .filter(word => word.length >= options.wordMin);
     wordpool       = this.knuthShuffle(wordpool);
     let paragraphs = [];

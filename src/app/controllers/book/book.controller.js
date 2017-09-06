@@ -1,21 +1,29 @@
 export class BookController {
-  constructor($log, $state, $stateParams, book, manifest) {
+  constructor($log, $state, $stateParams, book, manifest, seed) {
     'ngInject';
 
     this.$log     = $log;
     this.$state   = $state;
     this.manifest = manifest;
     this.book     = book;
-    this.seed     = $stateParams.seed || null;
+    this.seed     = seed;
 
     this.selectedBookKey = $stateParams.key;
+
+    if (!this.seed) {
+      this.randomizeSeed();
+    }
   }
 
   changeBook() {
-    this.$state.go('main.book', {key: this.selectedBookKey});
+    this.$state.go(this.$state.current.name, {
+      key: this.selectedBookKey
+    });
   }
 
   randomizeSeed() {
-    this.$state.go('main.book', {seed: this.book.getRandomIndex()});
+    this.$state.go(this.$state.current.name, {
+      seed: Math.floor(Math.random() * 1000)
+    });
   }
 }

@@ -31,11 +31,12 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
     })
     .state('main.book', {
       url         : 'book/:key/:seed',
+      abstract : true,
       templateUrl : 'app/controllers/book/book.html',
       controller  : 'BookController',
       controllerAs: 'vm',
       params: {
-        seed : '1'
+        seed : null
       },
       resolve     : {
         manifest : (bookService) => {
@@ -43,11 +44,20 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
         },
         book: ($stateParams,bookService) => {
           return bookService.getBookByKey($stateParams.key);
+        },
+        seed: ($stateParams) => {
+          let seed = Number($stateParams.seed);
+
+          if(seed > 0 && seed < 1000) {
+            return seed;
+          } else {
+            return null;
+          }
         }
       }
     })
     .state('main.book.passage', {
-      url         : '/passage',
+      url         : '',
       templateUrl : 'app/controllers/passage/passage.html',
       controller  : 'PassageController',
       controllerAs: 'vm'

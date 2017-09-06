@@ -1,4 +1,4 @@
 <p class="passage__paragraph"
    ng-repeat="paragraph in vm.paragraphs">
-    <span class="passage__sentence" ng-repeat="sentence in paragraph">{{sentence}} </span>
+    <span class="passage__sentence" ng-repeat="sentence in paragraph track by $index">{{sentence}} </span>
 </p>
