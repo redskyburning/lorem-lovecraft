@@ -2,16 +2,16 @@
 	<div class="home__header jumbotron">
         <h1>Lorem Lovecraft</h1>
         <h2>Lorem ipsum for a world gone mad</h2>
-        <div>
+        <div class="home__header-actions">
             <button class="btn btn-primary"
                     ui-sref="main.book.passage({
                         key : vm.book.key,
-                        seed : 1
+                        seed : vm.randomSeed
                     })">Fetch an Obscure Passage</button>
             <button class="btn btn-primary" ui-sref="main.book.ramblings({
                         key : vm.book.key,
-                        seed : 1
-                    })">Jibber mad ramblings</button>
+                        seed : vm.randomSeed
+                    })">Jibber Mad Ramblings</button>
         </div>
 	</div>
 	<div class="home__content container">

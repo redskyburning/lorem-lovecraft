@@ -18,13 +18,13 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }
     })
     .state('main.book', {
-      url         : 'book/:key/:seed/',
+      url         : 'book/:key/:seed',
       abstract : true,
       templateUrl : 'app/controllers/book/book.html',
       controller  : 'BookController',
       controllerAs: 'vm',
       params: {
-        seed : null
+        seed : String(Math.floor(Math.random() * 1000))
       },
       resolve     : {
         manifest : (bookService) => {

@@ -7,6 +7,7 @@ export class HomeController {
 
     this.book = null;
     this.passage = [];
+    this.randomSeed = Math.floor(Math.random() * 1000);
 
     this.bookService.getRandomBook()
       .then((book) => {
