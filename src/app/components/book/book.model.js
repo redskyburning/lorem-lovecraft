@@ -6,16 +6,16 @@ export class BookModel {
   }
 
   getParagraphSequence(length, seed) {
-    let maxLength     = this.getMaxLength();
-    length            = maxLength < length ? maxLength : length;
-    let startIndex = this.getMaxStartIndexForLength(length) * seed;
+    length            = Math.min(length, this.getMaxLength());
+    let startIndex    = Math.min(Math.floor(this.getMaxLength() * seed),this.getMaxStartIndexForLength(length));
+    let endIndex      = startIndex + length;
 
-    return this.paragraphs.slice(startIndex, startIndex + length);
+    let p = this.paragraphs.slice(startIndex, endIndex);
+    return p;
   }
 
   getRandomParagraphSequence(length) {
-    let maxLength  = this.getMaxLength();
-    length         = maxLength < length ? maxLength : length;
+    length = Math.min(length, this.getMaxLength());
 
     return this.getParagraphSequence(length, Math.random());
   }
