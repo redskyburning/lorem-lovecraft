@@ -15,6 +15,8 @@ import {SidebarController} from './controllers/sidebar/sidebar.controller';
 import {BookController} from './controllers/book/book.controller';
 import {PassageController} from './controllers/passage/passage.controller';
 import {RamblingsController} from './controllers/ramblings/ramblings.controller';
+import {PassageOptionsController} from './controllers/passage-options/passage-options.controller';
+import {RamblingsOptionsController} from './controllers/ramblings-options/ramblings-options.controller';
 /* controller import injection target */
 import {BookService} from './components/book/book.service';
 /* service import injection target */
@@ -51,5 +53,7 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.controller('BookController', BookController)
 	.controller('PassageController', PassageController)
 	.controller('RamblingsController', RamblingsController)
+	.controller('PassageOptionsController', PassageOptionsController)
+	.controller('RamblingsOptionsController', RamblingsOptionsController)
 	/* controller injection target */
 	.controller('MainController', MainController);

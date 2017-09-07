@@ -19,24 +19,24 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
     })
     .state('main.book', {
       url         : 'book/:key/:seed',
-      abstract : true,
+      abstract    : true,
       templateUrl : 'app/controllers/book/book.html',
       controller  : 'BookController',
       controllerAs: 'vm',
-      params: {
-        seed : String(Math.floor(Math.random() * 1000))
+      params      : {
+        seed: String(Math.floor(Math.random() * 1000))
       },
       resolve     : {
-        manifest : (bookService) => {
+        manifest: (bookService) => {
           return bookService.getManifest();
         },
-        book: ($stateParams,bookService) => {
+        book    : ($stateParams, bookService) => {
           return bookService.getBookByKey($stateParams.key);
         },
-        seed: ($stateParams) => {
+        seed    : ($stateParams) => {
           let seed = Number($stateParams.seed);
 
-          if(seed > 0 && seed < 1000) {
+          if (seed > 0 && seed < 1000) {
             return seed;
           } else {
             return null;
@@ -46,17 +46,35 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
     })
     .state('main.book.passage', {
       url         : '',
-      templateUrl : 'app/controllers/passage/passage.html',
-      controller  : 'PassageController',
-      controllerAs: 'vm'
+      views: {
+        '@main.book'       : {
+          templateUrl : 'app/controllers/passage/passage.html',
+          controller  : 'PassageController',
+          controllerAs: 'vm'
+        },
+        'options@main.book': {
+          templateUrl : 'app/controllers/passage-options/passage-options.html',
+          controller  : 'PassageOptionsController',
+          controllerAs: 'vm'
+        }
+      }
     })
-		.state('main.book.ramblings', {
-			url         : '/ramblings',
-			templateUrl : 'app/controllers/ramblings/ramblings.html',
-			controller  : 'RamblingsController',
-			controllerAs: 'vm'
-		})
-		/* route injection target */
+    .state('main.book.ramblings', {
+      url  : '/ramblings',
+      views: {
+        '@main.book'       : {
+          templateUrl : 'app/controllers/ramblings/ramblings.html',
+          controller  : 'RamblingsController',
+          controllerAs: 'vm'
+        },
+        'options@main.book': {
+          templateUrl : 'app/controllers/ramblings-options/ramblings-options.html',
+          controller  : 'RamblingsOptionsController',
+          controllerAs: 'vm'
+        }
+      }
+    })
+    /* route injection target */
     .state('main.error', {
       url         : 'error',
       templateUrl : 'app/controllers/error/error.html',

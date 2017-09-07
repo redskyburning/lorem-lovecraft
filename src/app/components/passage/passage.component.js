@@ -2,6 +2,7 @@ class PassageComponentController {
   constructor($log,$element) {
     'ngInject';
 
+    // TODO : Rename as excerpt
     this.$log = $log;
 
     $element.addClass('passage');
