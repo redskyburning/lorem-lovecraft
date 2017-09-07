@@ -32,16 +32,11 @@ body {
 
 	&__view {
 		flex:1 1 auto;
-        //background-color:$white;
-
-		> * {
-			min-height:100vh;
-		}
 	}
 
     &__footer {
         background:$gray-darker;
         color:$white;
-        padding:$site-padding $site-gutter;
+        padding:$site-gutter;
     }
 }

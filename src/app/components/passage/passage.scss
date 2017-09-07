@@ -1,5 +1,7 @@
 .passage {
     $root:&;
+    display:block;
+    margin-bottom:$site-gutter * 2;
 
     &__paragraph {
         &:first-of-type {

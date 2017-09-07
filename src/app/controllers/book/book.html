@@ -4,15 +4,25 @@
 
     <div class="book__sidebar">
         <form class="form">
+
             <div class="form-group">
-                <label class="control-label">Current Book:</label>
+                <label class="control-label">You behold:</label>
+                <select class="form-control"
+                        ng-model="vm.selectedMode"
+                        ng-change="vm.changeMode(vm.selectedMode)"
+                        ng-options="mode.key as mode.label for mode in vm.modes"></select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">From the Volume:</label>
                 <select class="form-control"
                         ng-model="vm.selectedBookKey"
                         ng-change="vm.changeBook()"
                         ng-options="book.key as book.title for book in vm.manifest"></select>
             </div>
+
             <div class="form-group">
-                <label class="control-label">Seed:</label>
+                <label class="control-label">Under the Sign:</label>
                 <div class="input-group">
                     <input class="form-control" type="text" ng-model="vm.seed" />
                     <a class="input-group-addon btn btn-default"
@@ -21,6 +31,7 @@
                     </a>
                 </div>
             </div>
+
         </form>
     </div>
 </div>
