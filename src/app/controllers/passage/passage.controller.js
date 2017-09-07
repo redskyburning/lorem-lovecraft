@@ -7,6 +7,6 @@ export class PassageController {
     this.book   = book;
     this.seed   = seed;
 
-    this.passage = this.book.getRandomParagraphSequence(5, this.seed);
+    this.passage = this.book.getParagraphSequence(Number($stateParams.paragraphCount), this.seed);
   }
 }

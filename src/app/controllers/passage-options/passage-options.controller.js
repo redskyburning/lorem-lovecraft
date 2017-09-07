@@ -1,9 +1,14 @@
 export class PassageOptionsController {
-  constructor ($log) {
+  constructor ($log,$stateParams,$state) {
     'ngInject';
 
     this.$log = $log;
+    this.$state = $state;
 
-    this.foo = 'bar';
+    this.paragraphCount = $stateParams.paragraphCount;
+  }
+
+  changeParagraphCount() {
+    this.$state.go(this.$state.current.name,{ paragraphCount : this.paragraphCount });
   }
 }

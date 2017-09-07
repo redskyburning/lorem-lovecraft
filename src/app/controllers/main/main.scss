@@ -7,7 +7,7 @@ body {
 .main {
 	display:flex;
 	flex-direction:column;
-    height:100%;
+    min-height:100vh;
 
 	&__nav {
 		margin-bottom:0;
@@ -28,11 +28,12 @@ body {
 
     &__body {
         padding:0;
+        flex:1 1 auto;
+        display:flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items:stretch;
     }
-
-	&__view {
-		flex:1 1 auto;
-	}
 
     &__footer {
         background:$gray-darker;

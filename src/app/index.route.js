@@ -45,7 +45,10 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }
     })
     .state('main.book.passage', {
-      url         : '',
+      url         : '/:paragraphCount',
+      params : {
+        paragraphCount : '5'
+      },
       views: {
         '@main.book'       : {
           templateUrl : 'app/controllers/passage/passage.html',
