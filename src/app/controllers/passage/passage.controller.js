@@ -5,8 +5,7 @@ export class PassageController {
     this.$log   = $log;
     this.$state = $state;
     this.book   = book;
-    this.seed   = seed;
 
-    this.passage = this.book.getParagraphSequence(Number($stateParams.paragraphCount), this.seed);
+    this.passage = this.book.getParagraphSequence(Number($stateParams.paragraphCount), (seed / 1000));
   }
 }

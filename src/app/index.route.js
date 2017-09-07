@@ -97,7 +97,20 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       url         : '',
       templateUrl : 'app/controllers/home/home.html',
       controller  : 'HomeController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      resolve : {
+        book : ($q,bookService) => {
+          return $q((resolve,reject) => {
+            bookService.getRandomBook()
+                .then((book) => {
+                  resolve(book);
+                })
+                .catch((error) => {
+                  reject(error);
+                });
+          });
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');
