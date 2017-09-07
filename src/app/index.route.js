@@ -63,7 +63,17 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }
     })
     .state('main.book.ramblings', {
-      url  : '/ramblings',
+      url  : '/ramblings?pc,spp,wpl,mwl',
+      resolve : {
+        ramblingsParams : ($stateParams) => {
+          return {
+            paragraphCount       : $stateParams.pc || 8,
+            sentencesPerParagraph: $stateParams.spp || 8,
+            wordsPerLine         : $stateParams.wpl || 10,
+            minWordLength        : $stateParams.mwl || 4
+          };
+        }
+      },
       views: {
         '@main.book'       : {
           templateUrl : 'app/controllers/ramblings/ramblings.html',

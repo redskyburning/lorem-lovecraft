@@ -1,3 +1,47 @@
-<div class="ramblings-options ">
-    ramblings options
+<div class="ramblings-options">
+
+    <div class="form-group">
+        <label class="control-label">Number of Paragraphs: {{ vm.options.paragraphCount }}</label>
+        <input class="range-slider"
+               type="range"
+               min="1"
+               max="10"
+               step="1"
+               ng-mouseup="vm.handleChange()"
+               ng-model="vm.options.paragraphCount">
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Sentences Per Paragraph: {{ vm.options.sentencesPerParagraph }}</label>
+        <input class="range-slider"
+               type="range"
+               min="1"
+               max="10"
+               step="1"
+               ng-mouseup="vm.handleChange()"
+               ng-model="vm.options.sentencesPerParagraph">
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Words Per Line: {{ vm.options.wordsPerLine }}</label>
+        <input class="range-slider"
+               type="range"
+               min="1"
+               max="10"
+               step="1"
+               ng-mouseup="vm.handleChange()"
+               ng-model="vm.options.wordsPerLine">
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Minimum Word Length: {{ vm.options.minWordLength }}</label>
+        <input class="range-slider"
+               type="range"
+               min="1"
+               max="10"
+               step="1"
+               ng-mouseup="vm.handleChange()"
+               ng-model="vm.options.minWordLength">
+    </div>
+
 </div>

@@ -117,8 +117,8 @@ export class BookService {
     });
   }
 
-  getWordpoolFromBook(book,seed) {
-    let paragraphs = book.getRandomParagraphSequence(10,seed);
+  getWordpoolFromBook(book, seed) {
+    let paragraphs = book.getRandomParagraphSequence(50, seed);
     let words      = [];
 
     paragraphs.forEach((sentences) => {
@@ -135,30 +135,30 @@ export class BookService {
 
   getIpsumFromBook(book, options = {}) {
     let defaultOptions = {
-      paragraphCount: 8,
-      sentencesPer  : 8,
-      wordsPer      : 10,
-      wordMin       : 4,
-      seed          : Math.random()
+      paragraphCount       : 8,
+      sentencesPerParagraph: 8,
+      wordsPerLine         : 10,
+      minWordLength        : 4,
+      seed                 : Math.random()
     };
 
     options        = Object.assign({}, defaultOptions, options);
-    let wordpool   = this.getWordpoolFromBook(book,options.seed)
-                         .filter(word => word.length >= options.wordMin);
+    let wordpool   = this.getWordpoolFromBook(book, options.seed)
+                         .filter(word => word.length >= options.minWordLength);
     wordpool       = this.knuthShuffle(wordpool);
     let paragraphs = [];
 
-    for (let pI = 0; pI < options.paragraphCount; pI++) {
-      let sentances = [];
+    for (let pI = 0; pI < options.paragraphCount && wordpool.length >= options.wordsPerLine; pI++) {
+      let sentences = [];
 
-      for (let sI = 0; sI < options.sentencesPer; sI++) {
-        let sentence = wordpool.splice(0, options.wordsPer).join(' ');
+      for (let sI = 0; sI < options.sentencesPerParagraph && wordpool.length >= options.wordsPerLine; sI++) {
+        let sentence = wordpool.splice(0, options.wordsPerLine).join(' ');
         sentence += this.getRandomPunctuation();
         sentence     = this.changeFirstCase(sentence, true);
-        sentances.push(sentence);
+        sentences.push(sentence);
       }
 
-      paragraphs.push(sentances);
+      paragraphs.push(sentences);
     }
 
     return paragraphs;
