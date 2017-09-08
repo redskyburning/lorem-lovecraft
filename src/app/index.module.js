@@ -7,6 +7,7 @@ import {MainController} from './controllers/main/main.controller';
 import {HomeController} from './controllers/home/home.controller';
 /* constant import injection target */
 import {BookModel} from './components/book/book.model';
+import {ExcerptModel} from './components/excerpt/excerpt.model';
 /* model import injection target */
 import {StyleGuideController} from './controllers/style-guide/style-guide.controller';
 import {StyleGuideModalController} from './controllers/style-guide-modal/style-guide-modal.controller';
@@ -19,6 +20,7 @@ import {PassageOptionsController} from './controllers/passage-options/passage-op
 import {RamblingsOptionsController} from './controllers/ramblings-options/ramblings-options.controller';
 /* controller import injection target */
 import {BookService} from './components/book/book.service';
+import {ExcerptService} from './components/excerpt/excerpt.service';
 /* service import injection target */
 /* factory import injection target */
 /* provider import injection target */
@@ -36,8 +38,10 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.run(runBlock)
 	/* constant injection target */
 	.constant('BookModel', BookModel)
+	.constant('ExcerptModel', ExcerptModel)
 	/* model injection target */
 	.service('bookService', BookService)
+	.service('excerptService', ExcerptService)
 	/* service injection target */
 	/* factory injection target */
 	/* provider injection target */

@@ -1,11 +1,12 @@
 export class PassageController {
-  constructor($log, $state, $stateParams, book, seed) {
+  constructor($log, $state, $stateParams, book, seed, excerptService) {
     'ngInject';
 
-    this.$log   = $log;
-    this.$state = $state;
-    this.book   = book;
+    this.$log           = $log;
+    this.$state         = $state;
+    this.book           = book;
+    this.excerptService = excerptService;
 
-    this.passage = this.book.getParagraphSequence(Number($stateParams.paragraphCount), (seed / 1000));
+    this.passage = this.excerptService.getExcerptFromBook(Number($stateParams.paragraphCount), (seed / 1000));
   }
 }
