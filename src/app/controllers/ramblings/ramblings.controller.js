@@ -1,15 +1,16 @@
 export class RamblingsController {
-  constructor($log, $state, book, seed, ramblingsParams, bookService) {
+  constructor($log, $state, book, seed, ramblingsParams, bookService, excerptService) {
     'ngInject';
 
-    this.$log        = $log;
-    this.$state      = $state;
-    this.book        = book;
-    this.bookService = bookService;
+    this.$log           = $log;
+    this.$state         = $state;
+    this.book           = book;
+    this.bookService    = bookService;
+    this.excerptService = excerptService;
 
-    this.options = ramblingsParams;
+    this.options      = ramblingsParams;
     this.options.seed = seed / 1000;
 
-    this.passage = this.bookService.getIpsumFromBook(book, this.options);
+    this.excerpt = this.excerptService.getIpsumExcerptFromBook(book, this.options);
   }
 }
