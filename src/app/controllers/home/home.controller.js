@@ -3,6 +3,7 @@ export class HomeController {
     'ngInject';
 
     this.$log = $log;
+    this.book = book;
 
     this.randomSeed = Math.floor(Math.random() * 1000);
 
