@@ -1,0 +1,15 @@
+[{
+    "path": "at-the-mountains-of-madness.json",
+    "key": "at-the-mountains-of-madness",
+    "title": "At the Mountains of Maddness",
+    "year": 1936,
+    "source": "https://en.wikisource.org/wiki/At_the_Mountains_of_Madness",
+    "author": "HP Lovecraft"
+}, {
+    "path": "the-call-of-cthulhu.json",
+    "key": "the-call-of-cthulhu",
+    "title": "The Call of Cthulhu",
+    "year": 1928,
+    "source": "https://en.wikisource.org/wiki/The_Call_of_Cthulhu",
+    "author": "HP Lovecraft"
+}]

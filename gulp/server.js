@@ -9,7 +9,7 @@ let browserSyncSpa = require('browser-sync-spa');
 
 let util = require('util');
 
-let proxyMiddleware = require('http-proxy-middleware');
+//let proxyMiddleware = require('http-proxy-middleware');
 
 function browserSyncInit(baseDir, browser) {
 	browser = browser === undefined ? 'default' : browser;
@@ -17,7 +17,8 @@ function browserSyncInit(baseDir, browser) {
 	let routes = null;
 	if (baseDir === conf.paths.src || (util.isArray(baseDir) && baseDir.indexOf(conf.paths.src) !== -1)) {
 		routes = {
-			'/bower_components': 'bower_components'
+			'/bower_components': 'bower_components',
+			'/books': conf.paths.bookOutput
 		};
 	}
 

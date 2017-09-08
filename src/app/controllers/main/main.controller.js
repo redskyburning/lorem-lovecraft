@@ -1,9 +1,7 @@
 export class MainController {
-  constructor ($log) {
-    'ngInject';
+	constructor($log) {
+		'ngInject';
 
-    this.$log = $log;
-
-    this.foo = 'bar';
-  }
+		this.$log        = $log;
+	}
 }
