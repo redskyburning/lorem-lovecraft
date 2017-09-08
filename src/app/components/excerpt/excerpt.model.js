@@ -1,5 +1,6 @@
 export class ExcerptModel {
-	constructor() {
-		this.foo = 'bar';
+
+	constructor(paragraphs = []) {
+		this.paragraphs = paragraphs;
 	}
 }
