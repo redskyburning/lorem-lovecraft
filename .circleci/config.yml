@@ -7,7 +7,6 @@ jobs:
   prep:
     docker:
       - image: circleci/node:7.10
-    working_directory: ~/repo
     steps:
       - checkout
 
@@ -29,7 +28,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:7.10
-    working_directory: ~/repo
     steps:
       - run: npm run build
 
