@@ -94,7 +94,22 @@ workflows:
       - build:
           requires:
             - prep
-      - deploy_to_test:
+      - deploy_to_prod:
+          requires:
+            - build
+  deploy_release:
+    jobs:
+      - prep:
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only: /^\d.\d.\d$/
+      - build:
+          requires:
+            - prep
+      - deploy_to_prod:
           requires:
             - build
 
