@@ -78,11 +78,6 @@ jobs:
 workflows:
   version: 2
   deploy_release:
-    branches:
-#      only:
-#        - master
-#        - develop
     jobs:
-      - prep
-      - build
+      - build_old
 
