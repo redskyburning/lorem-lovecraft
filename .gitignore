@@ -5,3 +5,4 @@ node_modules
 dist/*
 book_source/*
 .firebaserc
+book_json/*
