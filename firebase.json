@@ -14,7 +14,7 @@
     ],
     "headers": [
       {
-        "source": "book_json/**/(!manifest).json",
+        "source": "/book_json/**/(!manifest).json",
         "headers": [
           {
             "key": "Cache-Control",
@@ -23,7 +23,7 @@
         ]
       },
       {
-        "source": "book_json/**/manifest.json",
+        "source": "/book_json/**/manifest.json",
         "headers": [
           {
             "key": "Cache-Control",
