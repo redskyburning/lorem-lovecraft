@@ -87,10 +87,6 @@ workflows:
   deploy_develop:
     jobs:
       - prep
-          filters:
-            branches:
-              only:
-                - develop
       - build:
           requires:
             - prep
