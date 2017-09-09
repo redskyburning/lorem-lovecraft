@@ -34,6 +34,17 @@
         border-width:$top-border-width 1px 3px;
         margin-top:$top-border-width * -1;
         box-shadow: inset 0 0 40px 3px rgba(0,0,0,0.1);
+
+        &__options {
+            &-copy-actions {
+                margin-top:$site-gutter;
+                display:flex;
+
+                > * + * {
+                    margin-left:$site-spacing;
+                }
+            }
+        }
     }
 
     &__header {
@@ -58,4 +69,6 @@
         height:1px;
         opacity: 0;
     }
+
+
 }

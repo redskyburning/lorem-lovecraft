@@ -1,14 +1,14 @@
 .style-guide {
+    background:$white;
+
 	&__content {
 		> * + * {
 			margin-top:$site-gutter;
 			padding-top:$site-gutter;
-			border-top:$site-border;
 		}
 	}
 
 	&__section {
-		border:1px solid $gray-light;
 		padding:$site-gutter;
 
 		&__title, &__subtitle {

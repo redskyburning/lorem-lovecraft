@@ -43,10 +43,4 @@ export class BookController {
       seed: Math.floor(Math.random() * 1000)
     });
   }
-
-  triggerCopy() {
-    this.$rootScope.$broadcast('trigger-copy',{
-      copyHtml : false
-    });
-  }
 }
