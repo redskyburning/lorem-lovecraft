@@ -53,6 +53,9 @@ jobs:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
+      - attach_workspace:
+          at: ~/repo
+
       - run: npm test
 
   deploy_to_prod:
@@ -65,8 +68,7 @@ jobs:
 
       - deploy:
         name: Deploy to Firebase Prod
-        command: |
-          ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+        command: | ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
   build_old:
     docker:
