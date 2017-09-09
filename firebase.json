@@ -14,7 +14,7 @@
     ],
     "headers": [
       {
-        "source": "**/(!manifest).json",
+        "source": "**/*.@(js|css|map)",
         "headers": [
           {
             "key": "Cache-Control",
@@ -23,7 +23,16 @@
         ]
       },
       {
-        "source": "**/manifest.json",
+        "source": "**/books/**/!(manifest).json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31456000 immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/books/**/manifest.json",
         "headers": [
           {
             "key": "Cache-Control",
