@@ -100,7 +100,7 @@ gulp.task('books:clean', function () {
 
 gulp.task('books:build', ['books:parse'], function () {
   return gulp.src([path.join(conf.paths.bookOutput, '/**/*.json')])
-    .pipe(gulp.dest(path.join(conf.paths.dist,conf.paths.bookOutput)))
+    .pipe(gulp.dest(path.join(conf.paths.dist,conf.paths.bookServe)))
 });
 
 gulp.task('books:watch', ['books:parse'], function() {
