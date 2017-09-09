@@ -30,7 +30,7 @@ import {RenderExcerptComponent} from './components/render-excerpt/render-excerpt
 /* filter import injection target */
 /* module import injection target */
 
-angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap'/* module injection target */])
+angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'ngclipboard'/* module injection target */])
 	.constant('moment', moment)
 	.constant('knuthShuffle', knuthShuffle)
 	.config(config)
