@@ -80,19 +80,23 @@ jobs:
 
       - deploy:
           command: |
-            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN --project=$FIREBASE_PROJECT_TEST
+            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_TEST --project=$FIREBASE_PROJECT_TEST
 
 workflows:
   version: 2
   deploy_develop:
     jobs:
-      - prep
+      - prep:
+          branches:
+            only:
+              - develop
       - build:
           requires:
             - prep
       - deploy_to_test:
           requires:
             - build
+          filters:
 
 #  deploy_release:
 #    jobs:
