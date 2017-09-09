@@ -18,11 +18,12 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm install && ./node_modules/.bin/bower install
+      - run: npm install && npm install firebase-tools && ./node_modules/.bin/bower install
 
       - save_cache:
           paths:
             - node_modules
+            - bower_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
   build:
@@ -31,6 +32,13 @@ jobs:
     working_directory: ~/repo
     steps:
       - run: npm run build
+
+  test:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - run: npm test
 
   deploy_to_prod:
     docker:
@@ -85,3 +93,10 @@ workflows:
     jobs:
       - prep
       - build
+      - deploy_to_prod
+          name: Deploy to productions
+          filters:
+            branches:
+              only:
+                - master
+                - develop
