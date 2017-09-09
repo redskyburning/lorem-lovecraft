@@ -11,6 +11,9 @@ jobs:
     steps:
       - checkout
 
+      - attach_workspace:
+          at: ~/repo
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -27,7 +30,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - persist_to_workspace:
-          root: ~/repo/workspace
+          root: .
           paths:
             - ./*
   build:
