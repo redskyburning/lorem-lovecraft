@@ -1,0 +1,50 @@
+.book {
+    $translucent-stroke:1px solid $gray;
+
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:stretch;
+    padding:0;
+
+    > * + * {
+        margin-left:$site-gutter;
+    }
+
+    &__main {
+        flex:1 1 auto;
+        background-color:$white;
+        padding:0 $site-gutter;
+        box-shadow: inset 0 0 100px 5px rgba(0,0,0,0.07);
+        border:$translucent-stroke;
+        border-width:0px 1px;
+        min-height:100%;
+    }
+
+    &__sidebar {
+        $top-border-width:2px;
+        width:275px;
+        flex:0 0 auto;
+        position:sticky;
+        top:$site-gutter;
+        background-color:$white;
+        padding:$site-gutter;
+        border:$translucent-stroke;
+        border-width:$top-border-width 1px 3px;
+        margin-top:$top-border-width * -1;
+        box-shadow: inset 0 0 40px 3px rgba(0,0,0,0.1);
+    }
+
+    &__header {
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        border-bottom:3px solid $gray-darker;
+        padding:$site-gutter 0 $site-spacing;
+        margin-bottom:$site-gutter;
+    }
+
+    &__title {
+        margin:0;
+    }
+}

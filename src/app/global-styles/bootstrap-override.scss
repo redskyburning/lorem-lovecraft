@@ -3,3 +3,67 @@
 	font-family:$btn-font-family;
 	letter-spacing: .03em;
 }
+
+.jumbotron {
+    box-shadow: inset 0 0 40vmin 1vmin rgba(0,0,0,0.4);
+}
+
+.range-slider {
+    // Range Slider
+    $range-width: 100%;
+
+    $range-handle-color: $gray-dark;
+    $range-handle-color-hover: $brand-primary;
+    $range-handle-size: 20px;
+
+    $range-track-color: $gray-lighter;
+    $range-track-height: 10px;
+
+    $range-label-width: 60px;
+
+    -webkit-appearance: none;
+    width: calc(100% - (#{$range-label-width + 13px}));
+    height: $range-track-height;
+    border-radius: 5px;
+    background: $range-track-color;
+    outline: none;
+    padding: 0;
+    margin: $site-spacing 0 0;
+
+    // Range Handle
+    &::-webkit-slider-thumb {
+        appearance: none;
+        width: $range-handle-size;
+        height: $range-handle-size;
+        border-radius: 50%;
+        background: $range-handle-color;
+        cursor: pointer;
+        transition: background .15s ease-in-out;
+
+        &:hover {
+            background: $range-handle-color-hover;
+        }
+    }
+
+    &:active::-webkit-slider-thumb {
+        background: $range-handle-color-hover;
+    }
+
+    &::-moz-range-thumb {
+        width: $range-handle-size;
+        height: $range-handle-size;
+        border: 0;
+        border-radius: 50%;
+        background: $range-handle-color;
+        cursor: pointer;
+        transition: background .15s ease-in-out;
+
+        &:hover {
+            background: $range-handle-color-hover;
+        }
+    }
+
+    &:active::-moz-range-thumb {
+        background: $range-handle-color-hover;
+    }
+}
