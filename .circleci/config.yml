@@ -39,12 +39,12 @@ jobs:
     working_directory: ~/repo
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/repo
 
       - run: npm run build
 
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: ~/repo
           paths:
             - dist/*
 
@@ -61,7 +61,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - attach_workspace:
-          at: /tmp/workspace/dist
+          at: ~/repo
 
       - deploy:
         name: Deploy to Firebase Production
