@@ -78,8 +78,6 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
-      - run: ./node_modules/.bin/firebase use --add $FIREBASE_PROJECT_TEST
-
       - deploy:
           command: |
             ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_TEST --project=$FIREBASE_PROJECT_TEST
