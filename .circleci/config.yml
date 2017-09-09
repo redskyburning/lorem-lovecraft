@@ -109,7 +109,6 @@ workflows:
       - prep
       - build
       - deploy_to_prod
-          name: Deploy to production
           filters:
             branches:
               only:
