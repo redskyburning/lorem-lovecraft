@@ -14,11 +14,20 @@
     ],
     "headers": [
       {
-        "source": "book_json/**/*.json",
+        "source": "book_json/**/(!manifest).json",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=31456000"
+            "value": "max-age=31456000 immutable"
+          }
+        ]
+      },
+      {
+        "source": "book_json/**/manifest.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
           }
         ]
       }
