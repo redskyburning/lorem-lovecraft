@@ -96,16 +96,20 @@ jobs:
           fi
 workflows:
   version: 2
-  deploy_release:
-    jobs:
-      - build_old:
-          filters:
-            branches:
-              only:
-                - master
-                - develop
+#  deploy_release:
+#    jobs:
+#      - build_old:
+#          filters:
+#            branches:
+#              only:
+#                - master
+#                - develop
   modular:
     jobs:
       - prep
-      - build
-      - deploy_to_prod
+      - build:
+          requires:
+            -prep
+      - deploy_to_prod:
+          requires:
+            - build
