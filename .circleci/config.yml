@@ -82,36 +82,6 @@ jobs:
           command: |
             ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN --project=$FIREBASE_PROJECT_TEST
 
-  build_old:
-    docker:
-      - image: circleci/node:7.10
-    working_directory: ~/repo
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "bower.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm install && npm install firebase-tools && ./node_modules/.bin/bower install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "bower.json" }}
-
-      # run tests!
-      - run: npm run build
-
-      - deploy:
-         name: Deploy Master to Firebase
-         command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
-          fi
 workflows:
   version: 2
   deploy_develop:
