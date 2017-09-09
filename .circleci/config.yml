@@ -4,20 +4,15 @@
 #
 version: 2
 jobs:
-  build:
+  prep:
     docker:
-      # specify the version you desire here
       - image: circleci/node:7.10
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/repo
-
     steps:
       - checkout
+
+      - attach_workspace:
+          at: ~/repo
 
       # Download and cache dependencies
       - restore_cache:
@@ -26,20 +21,103 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm install && ./node_modules/.bin/bower install
+      - run: npm install && npm install firebase-tools && ./node_modules/.bin/bower install
 
       - save_cache:
           paths:
             - node_modules
+            - bower_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+  build:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
       - run: npm run build
 
-      - deploy:
-         name: Deploy Master to Firebase
-         command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
-          fi
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - dist/*
 
+  test:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run: npm test
+
+  deploy_to_prod:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - deploy:
+          command: |
+            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN --project=$FIREBASE_PROJECT_PROD
+
+  deploy_to_test:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - deploy:
+          command: |
+            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN_TEST --project=$FIREBASE_PROJECT_TEST
+
+workflows:
+  version: 2
+  deploy_develop:
+    jobs:
+      - prep:
+          filters:
+            branches:
+              only:
+                - develop
+      - build:
+          requires:
+            - prep
+      - deploy_to_test:
+          requires:
+            - build
+  deploy_release:
+    jobs:
+      - prep:
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only: /^\d.\d.\d$/
+      - build:
+          requires:
+            - prep
+      - deploy_to_prod:
+          requires:
+            - build
+
+#  deploy_release:
+#    jobs:
+#      - build_old:
+#          filters:
+#            branches:
+#              only:
+#                - master
+#                - develop
