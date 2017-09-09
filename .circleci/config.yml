@@ -97,7 +97,6 @@ workflows:
       - deploy_to_test:
           requires:
             - build
-          filters:
 
 #  deploy_release:
 #    jobs:
