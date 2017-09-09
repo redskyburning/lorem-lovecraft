@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items:stretch;
     padding:0;
+    position:relative;
 
     > * + * {
         margin-left:$site-gutter;
@@ -46,5 +47,15 @@
 
     &__title {
         margin:0;
+    }
+
+    &__copy-target {
+        position:absolute;
+        z-index: -1;
+        top:0;
+        left:0;
+        width:1px;
+        height:1px;
+        opacity: 0;
     }
 }

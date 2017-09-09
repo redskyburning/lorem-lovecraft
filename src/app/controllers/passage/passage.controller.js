@@ -7,6 +7,7 @@ export class PassageController {
     this.book           = book;
     this.excerptService = excerptService;
 
-    this.excerpt = this.excerptService.getExcerptFromBook(book,Number($stateParams.paragraphCount), (seed / 1000));
+    this.excerpt  = this.excerptService.getExcerptFromBook(book, Number($stateParams.paragraphCount), (seed / 1000));
+    this.copyText = this.excerptService.getCopyTextFromExcerpt(this.excerpt,true);
   }
 }

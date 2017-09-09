@@ -77,4 +77,14 @@ export class ExcerptService {
     let first = toUpperNotLower ? string.charAt(0).toUpperCase() : string.charAt(0).toLowerCase();
     return first + string.slice(1);
   }
+
+  getCopyTextFromExcerpt(excerpt, withHtml = false) {
+    let text = excerpt.paragraphs
+                      .map((sentences) => {
+                        return sentences.join(' ');
+                      })
+                      .join(withHtml ? '</p>\n\n<p>' : '\n\n');
+
+    return withHtml ? `<p>${text}</p>` : text;
+  }
 }
