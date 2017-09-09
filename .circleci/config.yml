@@ -42,10 +42,6 @@ jobs:
         command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
   build_old:
-    branches:
-      only:
-        - master
-        - develop
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
@@ -79,5 +75,9 @@ workflows:
   version: 2
   deploy_release:
     jobs:
-      - build_old
-
+      - build_old:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
