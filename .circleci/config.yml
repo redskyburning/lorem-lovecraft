@@ -109,8 +109,3 @@ workflows:
       - prep
       - build
       - deploy_to_prod
-          filters:
-            branches:
-              only:
-                - master
-                - develop
