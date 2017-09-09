@@ -67,8 +67,8 @@ jobs:
           at: ~/repo
 
       - deploy:
-        name: Deploy to Firebase Prod
-        command: | ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+        command: |
+          ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
   build_old:
     docker:
