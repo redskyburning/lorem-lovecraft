@@ -68,7 +68,7 @@ jobs:
 
       - deploy:
           command: |
-            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN --project=$FIREBASE_PROJECT_PROD
 
   build_old:
     docker:
