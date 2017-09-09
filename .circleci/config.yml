@@ -102,8 +102,7 @@ workflows:
       - prep:
           filters:
             branches:
-              only:
-                - master
+              ignore: /.*/
             tags:
               only: /^\d.\d.\d$/
       - build:
