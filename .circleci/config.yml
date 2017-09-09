@@ -70,6 +70,18 @@ jobs:
           command: |
             ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN --project=$FIREBASE_PROJECT_PROD
 
+  deploy_to_test:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - deploy:
+          command: |
+            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN --project=$FIREBASE_PROJECT_TEST
+
   build_old:
     docker:
       - image: circleci/node:7.10
@@ -102,13 +114,17 @@ jobs:
           fi
 workflows:
   version: 2
-  modular:
+  deploy_develop:
     jobs:
       - prep
+          filters:
+            branches:
+              only:
+                - develop
       - build:
           requires:
             - prep
-      - deploy_to_prod:
+      - deploy_to_test:
           requires:
             - build
 
