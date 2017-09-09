@@ -105,9 +105,9 @@ workflows:
       - build:
           requires:
             - prep
-#      - deploy_to_prod:
-#          requires:
-#            - build
+      - deploy_to_prod:
+          requires:
+            - build
 
 #  deploy_release:
 #    jobs:
