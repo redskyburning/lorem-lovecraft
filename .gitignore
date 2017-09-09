@@ -4,5 +4,5 @@ node_modules
 .tmp
 dist/*
 book_source/*
-.firebaserc
+#.firebaserc
 book_json/*

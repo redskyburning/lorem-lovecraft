@@ -4,22 +4,51 @@
 #
 version: 2
 jobs:
+  prep:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install && ./node_modules/.bin/bower install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
   build:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - run: npm run build
+
+  deploy_to_prod:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - deploy:
+        name: Deploy to Firebase Production
+        command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+
+  build_old:
     branches:
       only:
         - master
         - develop
     docker:
-      # specify the version you desire here
       - image: circleci/node:7.10
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/repo
-
     steps:
       - checkout
 
@@ -46,4 +75,15 @@ jobs:
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
           fi
+workflows:
+  version: 2
+  deploy_release:
+    branches:
+      only:
+        - master
+        - develop
+    jobs:
+      - prep
+      - build
+      - deploy
 
