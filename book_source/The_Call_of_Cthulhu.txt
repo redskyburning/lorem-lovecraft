@@ -1,4 +1,5 @@
 ---
+key: 'call-of-cthulhu'
 title: 'The Call of Cthulhu'
 author: 'HP Lovecraft'
 source: 'https://en.wikisource.org/wiki/The_Call_of_Cthulhu'

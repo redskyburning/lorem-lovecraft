@@ -17,9 +17,9 @@ function browserSyncInit(baseDir, browser) {
 	let routes = null;
 	if (baseDir === conf.paths.src || (util.isArray(baseDir) && baseDir.indexOf(conf.paths.src) !== -1)) {
 		routes = {
-			'/bower_components': 'bower_components',
-			'/books': conf.paths.bookOutput
+			'/bower_components': 'bower_components'
 		};
+		routes[`/${conf.paths.bookServe}`] = conf.paths.bookOutput
 	}
 
 	let server = {

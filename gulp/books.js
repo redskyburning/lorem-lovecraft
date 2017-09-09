@@ -3,9 +3,12 @@
 let path       = require('path');
 let gulp       = require('gulp');
 let conf       = require('./conf');
-let $          = require('gulp-load-plugins')();
 let through2   = require('through2');
 let changeCase = require('change-case');
+
+let $ = require('gulp-load-plugins')({
+  pattern: ['gulp-*', 'del']
+});
 
 function convertToJson() {
   let manifest      = [];
@@ -43,22 +46,23 @@ function convertToJson() {
     file.contents = new Buffer(JSON.stringify(textArray));
 
     let frontMatter = file.frontMatter || {};
+    let title = frontMatter.title || null;
+    let key = changeCase.paramCase(frontMatter.key || title);
 
     // Change to json ext and normalize name
     let pathObj  = path.parse(file.path);
-    pathObj.base = changeCase.paramCase(pathObj.name) + '.json';
+    pathObj.base = key + '.json';
     file.path    = path.format(pathObj);
 
     // Push info to manifest and save ref file for later if needed
     if (referenceFile === null) {
       referenceFile = file.clone();
     }
-    let key = path.basename(file.path, path.extname(file.path));
 
     manifest.push({
       path  : path.basename(file.path),
       key   : key,
-      title : frontMatter.title || key,
+      title : title,
       year  : frontMatter.year || null,
       source: frontMatter.source || null,
       author: frontMatter.author || null
@@ -80,12 +84,28 @@ function convertToJson() {
   return through2.obj(transformFunction, flushFunction);
 }
 
-gulp.task('parse', [], function() {
+gulp.task('books:parse', ['books:clean'], function() {
   return gulp.src([path.join(conf.paths.bookSrc, '/**/*.txt')])
+             .pipe($.rev())
              .pipe($.frontMatter())
              .pipe(convertToJson())
              .pipe($.jsbeautifier())
-             .pipe($.debug())
+             //.pipe($.debug())
              .pipe(gulp.dest(conf.paths.bookOutput));
+});
+
+gulp.task('books:clean', function () {
+  return $.del([path.join(conf.paths.bookOutput, '/**/*.json')]);
+});
+
+gulp.task('books:build', ['books:parse'], function () {
+  return gulp.src([path.join(conf.paths.bookOutput, '/**/*.json')])
+    .pipe(gulp.dest(path.join(conf.paths.dist,conf.paths.bookServe)))
+});
+
+gulp.task('books:watch', ['books:parse'], function() {
+  gulp.watch([path.join(conf.paths.bookSrc, '/**/*.txt')], function() {
+    gulp.start('books:parse');
+  });
 });
 
