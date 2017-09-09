@@ -42,8 +42,9 @@ jobs:
 
       - deploy:
          name: Deploy Master to Firebase
-         command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
-          fi
+         command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+#         command: |
+#          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+#          fi
 
