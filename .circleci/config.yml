@@ -28,8 +28,7 @@ jobs:
 
       - persist_to_workspace:
           root: /tmp/workspace
-          paths:
-            - *
+          paths: *
   build:
     docker:
       - image: circleci/node:7.10
