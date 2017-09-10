@@ -11,6 +11,7 @@ export class BookController {
 
     this.selectedBookKey = $stateParams.key;
     this.selectedMode    = angular.copy($state.current.name);
+    this.isCollapsed     = true;
 
     this.modes = [
       {
@@ -42,5 +43,9 @@ export class BookController {
     this.$state.go(this.$state.current.name, {
       seed: Math.floor(Math.random() * 1000)
     });
+  }
+
+  toggleCollapsed() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

@@ -1,5 +1,5 @@
 .passage-options {
-  &__something {
-    color:red;
-  }
+    @media screen and (min-width:$screen-xs-max) and (max-width:$screen-sm-max) {
+        @include book-options();
+    }
 }

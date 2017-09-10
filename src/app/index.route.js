@@ -9,11 +9,6 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
           templateUrl : 'app/controllers/main/main.html',
           controller  : 'MainController',
           controllerAs: 'main'
-        },
-        'sidebar@main': {
-          templateUrl : 'app/controllers/sidebar/sidebar.html',
-          controller  : 'SidebarController',
-          controllerAs: 'vm'
         }
       }
     })
