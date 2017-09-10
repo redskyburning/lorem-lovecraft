@@ -18,3 +18,15 @@
 	width:100%;
 	height:auto;
 }
+
+@mixin book-options() {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    > * {
+        flex: 0 1 auto;
+        width: calc(50% - #{$site-padding});
+    }
+}
