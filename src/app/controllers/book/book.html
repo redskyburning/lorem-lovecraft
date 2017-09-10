@@ -3,8 +3,8 @@
     <div class="book__main" ui-view></div>
 
     <div class="book__sidebar-track">
-        <div class="book__sidebar">
-            <form class="form">
+        <div class="book__sidebar" ng-class="{ 'is-collapsed' : vm.isCollapsed }">
+            <form class="form book__sidebar__form">
 
                 <div class="form-group">
                     <label class="control-label">You behold:</label>
@@ -33,9 +33,22 @@
                     </div>
                 </div>
 
-                <div class="book__sidebar__options-view" ui-view="options"></div>
-
             </form>
+
+            <div class="book__sidebar__view" ui-view="options"></div>
+
+            <div class="form-group book__sidebar__options-copy-actions">
+                <button class="btn btn-primary" ngclipboard data-clipboard-target="#copy-target">Copy</button>
+                <button class="btn btn-primary" ngclipboard data-clipboard-target="#html-copy-target">Copy Html</button>
+            </div>
+        </div>
+        <div class="book__sidebar-toggle">
+            <button class="btn btn-primary book__sidebar-toggle__button"
+                    ng-click="vm.toggleCollapsed()"
+                    ng-if="vm.isCollapsed">Reveal Options</button>
+            <button class="btn btn-primary book__sidebar-toggle__button"
+                    ng-click="vm.toggleCollapsed()"
+                    ng-if="!vm.isCollapsed">Obscure Options</button>
         </div>
     </div>
 </div>

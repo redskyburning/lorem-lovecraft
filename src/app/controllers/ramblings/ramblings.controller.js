@@ -11,6 +11,8 @@ export class RamblingsController {
     this.options      = ramblingsParams;
     this.options.seed = seed / 1000;
 
-    this.excerpt = this.excerptService.getIpsumExcerptFromBook(book, this.options);
+    this.excerpt      = this.excerptService.getIpsumExcerptFromBook(book, this.options);
+    this.copyText     = this.excerptService.getCopyTextFromExcerpt(this.excerpt, false);
+    this.htmlCopyText = this.excerptService.getCopyTextFromExcerpt(this.excerpt, true);
   }
 }

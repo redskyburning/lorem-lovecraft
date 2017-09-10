@@ -1,24 +1,26 @@
 export class BookController {
-  constructor($log, $state, $stateParams, book, manifest, seed) {
+  constructor($log, $state, $stateParams, $rootScope, book, manifest, seed) {
     'ngInject';
 
-    this.$log     = $log;
-    this.$state   = $state;
-    this.manifest = manifest;
-    this.book     = book;
-    this.seed     = seed;
+    this.$log       = $log;
+    this.$state     = $state;
+    this.$rootScope = $rootScope;
+    this.manifest   = manifest;
+    this.book       = book;
+    this.seed       = seed;
 
     this.selectedBookKey = $stateParams.key;
-    this.selectedMode = angular.copy($state.current.name);
+    this.selectedMode    = angular.copy($state.current.name);
+    this.isCollapsed     = true;
 
     this.modes = [
       {
-        label : 'An Obscure Passage',
-        key : 'main.book.passage'
+        label: 'An Obscure Passage',
+        key  : 'main.book.passage'
       },
       {
         label: 'Mad Ramblings',
-        key : 'main.book.ramblings'
+        key  : 'main.book.ramblings'
       }
     ];
 
@@ -41,5 +43,9 @@ export class BookController {
     this.$state.go(this.$state.current.name, {
       seed: Math.floor(Math.random() * 1000)
     });
+  }
+
+  toggleCollapsed() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }
