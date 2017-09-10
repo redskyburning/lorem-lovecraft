@@ -80,6 +80,12 @@
                     @include book-options();
                 }
             }
+
+            &__options {
+                &-copy-actions {
+                    justify-content:flex-end;
+                }
+            }
         }
     }
 
