@@ -12,7 +12,6 @@ import {ExcerptModel} from './components/excerpt/excerpt.model';
 import {StyleGuideController} from './controllers/style-guide/style-guide.controller';
 import {StyleGuideModalController} from './controllers/style-guide-modal/style-guide-modal.controller';
 import {ErrorController} from './controllers/error/error.controller';
-import {SidebarController} from './controllers/sidebar/sidebar.controller';
 import {BookController} from './controllers/book/book.controller';
 import {PassageController} from './controllers/passage/passage.controller';
 import {RamblingsController} from './controllers/ramblings/ramblings.controller';
@@ -53,7 +52,6 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.controller('StyleGuideController', StyleGuideController)
 	.controller('StyleGuideModalController', StyleGuideModalController)
 	.controller('ErrorController', ErrorController)
-	.controller('SidebarController', SidebarController)
 	.controller('BookController', BookController)
 	.controller('PassageController', PassageController)
 	.controller('RamblingsController', RamblingsController)
