@@ -111,12 +111,16 @@ workflows:
           filters:
             tags:
               only: /^\d.\d.\d$/
+            branches:
+              ignore: /.*/
       - deploy_to_prod:
           requires:
             - build
           filters:
             tags:
               only: /^\d.\d.\d$/
+            branches:
+              ignore: /.*/
 
 #  deploy_release:
 #    jobs:
