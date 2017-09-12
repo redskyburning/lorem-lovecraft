@@ -28,7 +28,7 @@ export class ExcerptService {
     paragraphs.forEach((sentences) => {
       sentences.forEach((sentence) => {
         sentence    = sentence.replace(/^"*(.+)[.,?!;]"*$/, '$1') // Trim quotes and punctuation
-                              .split(/[.,?!;]*\s/); // Split on [punctuation +] space
+                              .split(/["']*[.,?!;]*["']*\s+["']*/); // Split on [punctuation +] space
         sentence[0] = this.changeFirstCase(sentence[0], false); // Decapitalize first letter.
         words       = words.concat(sentence);
       });
