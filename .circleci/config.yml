@@ -33,7 +33,7 @@ jobs:
           root: .
           paths:
             - ./*
-  build:
+  build_prod:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
@@ -41,7 +41,22 @@ jobs:
       - attach_workspace:
           at: ~/repo
 
-      - run: npm run build
+      - run: gulp build --environment=$ENVIRONMENT_NAME_PROD --gaId=$ANALYTICS_ID_PROD
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - dist/*
+
+  build_test:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+
+      - run: gulp build --environment=$ENVIRONMENT_NAME_TEST --gaId=$ANALYTICS_ID_TEST
 
       - persist_to_workspace:
           root: ~/repo
@@ -91,12 +106,12 @@ workflows:
             branches:
               only:
                 - develop
-      - build:
+      - build_prod:
           requires:
             - prep
       - deploy_to_test:
           requires:
-            - build
+            - build_prod
   deploy_release:
     jobs:
       - prep:
@@ -105,7 +120,7 @@ workflows:
               only: /^\d.\d.\d$/
             branches:
               ignore: /.*/
-      - build:
+      - build_test:
           requires:
             - prep
           filters:
@@ -115,7 +130,7 @@ workflows:
               ignore: /.*/
       - deploy_to_prod:
           requires:
-            - build
+            - build_test
           filters:
             tags:
               only: /^\d.\d.\d$/
