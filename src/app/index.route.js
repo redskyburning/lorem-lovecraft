@@ -10,6 +10,11 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
           controller  : 'MainController',
           controllerAs: 'main'
         }
+      },
+      resolve : {
+        initAnalytics : (analyticsService) => { // eslint-disable-line
+          return;
+        }
       }
     })
     .state('main.book', {
