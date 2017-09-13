@@ -111,7 +111,7 @@ workflows:
             - prep
       - deploy_to_test:
           requires:
-            - build_prod
+            - build_test
   deploy_release:
     jobs:
       - prep:
@@ -130,7 +130,7 @@ workflows:
               ignore: /.*/
       - deploy_to_prod:
           requires:
-            - build_test
+            - build_prod
           filters:
             tags:
               only: /^\d.\d.\d$/
