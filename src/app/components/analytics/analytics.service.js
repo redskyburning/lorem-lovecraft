@@ -1,5 +1,5 @@
 export class AnalyticsService {
-	constructor ($log, $transitions, $state, ga) {
+	constructor ($log, $transitions, $state, ga, configurationService) {
 		'ngInject';
 
 		// Things injected
@@ -8,14 +8,13 @@ export class AnalyticsService {
 		this.$state = $state;
 		this.ga = ga;
 
-		this.prodId = 'UA-106348066-1';
-		this.testId = 'UA-106348066-2';
+		this.gaId = configurationService.getGaId();
 
 		this.init();
 	}
 
 	init() {
-    this.ga('create', this.testId, 'auto');
+    this.ga('create', this.gaId, 'auto');
 
     this.$transitions.onSuccess({},() => {
       this.trackPageView();
