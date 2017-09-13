@@ -113,9 +113,15 @@
             border:$translucent-stroke;
             border-width:$top-border-width 1px 3px;
             margin-top:$top-border-width * -1;
+            max-height:calc(100vh - #{$site-gutter * 2});
+            overflow-y:auto;
 
             &-toggle {
                 display:none;
+            }
+
+            &-track {
+                padding:$site-gutter 0;
             }
         }
     }
