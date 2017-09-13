@@ -1,10 +1,11 @@
-/* global moment:false knuthShuffle:false */
+/* global moment:false knuthShuffle:false ga:false */
 
 import {config} from './index.config';
 import {routerConfig} from './index.route';
 import {runBlock} from './index.run';
 import {MainController} from './controllers/main/main.controller';
 import {HomeController} from './controllers/home/home.controller';
+import {configurationConstant} from './components/configuration/configuration.constant';
 /* constant import injection target */
 import {BookModel} from './components/book/book.model';
 import {ExcerptModel} from './components/excerpt/excerpt.model';
@@ -20,6 +21,8 @@ import {RamblingsOptionsController} from './controllers/ramblings-options/rambli
 /* controller import injection target */
 import {BookService} from './components/book/book.service';
 import {ExcerptService} from './components/excerpt/excerpt.service';
+import {AnalyticsService} from './components/analytics/analytics.service';
+import {ConfigurationService} from './components/configuration/configuration.service';
 /* service import injection target */
 /* factory import injection target */
 /* provider import injection target */
@@ -35,12 +38,16 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.config(config)
 	.config(routerConfig)
 	.run(runBlock)
+	.constant('ga', ga)
+	.constant('configuration', configurationConstant)
 	/* constant injection target */
 	.constant('BookModel', BookModel)
 	.constant('ExcerptModel', ExcerptModel)
 	/* model injection target */
 	.service('bookService', BookService)
 	.service('excerptService', ExcerptService)
+	.service('analyticsService', AnalyticsService)
+	.service('configurationService', ConfigurationService)
 	/* service injection target */
 	/* factory injection target */
 	/* provider injection target */
