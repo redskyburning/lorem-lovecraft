@@ -1,10 +1,11 @@
 export class AnalyticsService {
-	constructor ($log, $transitions, ga) {
+	constructor ($log, $transitions, $state, ga) {
 		'ngInject';
 
 		// Things injected
 		this.$log = $log;
 		this.$transitions = $transitions;
+		this.$state = $state;
 		this.ga = ga;
 
 		this.prodId = 'UA-106348066-1';
@@ -22,7 +23,7 @@ export class AnalyticsService {
   }
 
   trackPageView() {
-    this.$log.error('contact');
+    this.ga('set', 'page', this.$state.href(this.$state.current));
     this.ga('send', 'pageview');
   }
 }
