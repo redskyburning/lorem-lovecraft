@@ -3,7 +3,7 @@
     <div class="book__main" ui-view></div>
 
     <div class="book__sidebar-track">
-        <div class="book__sidebar" ng-class="{ 'is-collapsed' : vm.isCollapsed }">
+        <div class="book__sidebar" ng-class="{ 'is-collapsed' : !vm.isOpen }">
             <form class="form book__sidebar__form">
 
                 <div class="form-group">

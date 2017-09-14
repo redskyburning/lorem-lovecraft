@@ -1,17 +1,12 @@
 <div class="main">
 
-	<nav class="main__nav navbar navbar-inverse">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">Lorem Lovecraft</a>
-			</div>
-
-			<!--<ul class="nav navbar-nav navbar-right">
-				<li><a ui-sref="main.style-guide">Style Guide</a></li>
-			</ul>-->
-		</div>
-	</nav>
+	<div class="main-nav__wrap">
+        <nav class="main-nav container">
+            <a class="main-nav__site-name" ui-sref="main.home">Lorem Lovecraft</a>
+            <span class="main-nav__toggle glyphicon glyphicon-menu-hamburger"
+                  ng-click="main.toggleSidebar()"></span>
+        </nav>
+	</div>
 
     <div class="main__body container" ui-view></div>
 

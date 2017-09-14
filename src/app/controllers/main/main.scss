@@ -26,6 +26,42 @@ body {
 		}
 	}
 
+    &-nav {
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        color:$navbar-inverse-color;
+        font-family:$headings-font-family;
+        line-height: $line-height-computed;
+        height: $navbar-height;
+
+        &__wrap {
+            background:$navbar-inverse-bg;
+        }
+
+        &:before, &:after {
+            content:none; // Cancels out weirdness from .container
+        }
+
+        &__site-name {
+            font-size:$font-size-h3;
+
+            &, &:link, &:hover, &:visited, &:active {
+                color:$navbar-inverse-brand-color;
+                text-decoration: none;
+            }
+        }
+
+        &__toggle {
+            transition:color .2s ease-in-out;
+
+            &:hover, &.is-active {
+                color:$navbar-inverse-brand-color;
+            }
+        }
+    }
+
     &__body {
         padding:0;
         flex:1 1 auto;
@@ -39,5 +75,15 @@ body {
         background:$gray-darker;
         color:$white;
         padding:$site-gutter;
+    }
+}
+
+@media screen and (min-width:$screen-md) {
+    .main {
+        &-nav {
+            &__toggle {
+                display:none;
+            }
+        }
     }
 }
