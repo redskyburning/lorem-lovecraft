@@ -1,6 +1,6 @@
 {
   "name": "lorem-lovecraft",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "dependencies": {
     "angular-animate": "~1.5.3",
     "angular-touch": "~1.5.3",
