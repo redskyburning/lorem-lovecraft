@@ -14,4 +14,9 @@ export class SidebarStateService {
     this.isOpen = !this.isOpen;
     this.$rootScope.$broadcast(this.changeEventName,this.isOpen);
   }
+
+  closeSidebar() {
+    this.isOpen = false;
+    this.$rootScope.$broadcast(this.changeEventName,this.isOpen);
+  }
 }

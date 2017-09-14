@@ -41,14 +41,10 @@
                 <button class="btn btn-primary" ngclipboard data-clipboard-target="#copy-target">Copy</button>
                 <button class="btn btn-primary" ngclipboard data-clipboard-target="#html-copy-target">Copy Html</button>
             </div>
-        </div>
-        <div class="book__sidebar-toggle">
-            <button class="btn btn-primary book__sidebar-toggle__button"
-                    ng-click="vm.toggleCollapsed()"
-                    ng-if="vm.isCollapsed">Reveal Options</button>
-            <button class="btn btn-primary book__sidebar-toggle__button"
-                    ng-click="vm.toggleCollapsed()"
-                    ng-if="!vm.isCollapsed">Obscure Options</button>
+
+            <div class="book__sidebar__toggle" ng-click="vm.closeSidebar()">
+                <span class="glyphicon glyphicon-remove-circle"></span>
+            </div>
         </div>
     </div>
 </div>

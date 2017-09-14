@@ -7,6 +7,7 @@ export class BookController {
     this.manifest   = manifest;
     this.book       = book;
     this.seed       = seed;
+    this.sidebarStateService = sidebarStateService;
 
     this.selectedBookKey = $stateParams.key;
     this.selectedMode    = angular.copy($state.current.name);
@@ -23,7 +24,7 @@ export class BookController {
       }
     ];
 
-    this.sidebarListener = $rootScope.$on(sidebarStateService.changeEventName, (event,isOpen) => {
+    this.sidebarListener = $rootScope.$on(this.sidebarStateService.changeEventName, (event,isOpen) => {
       this.isOpen = isOpen;
     });
 
@@ -48,7 +49,7 @@ export class BookController {
     });
   }
 
-  toggleCollapsed() {
-    this.isCollapsed = !this.isCollapsed;
+  closeSidebar() {
+    this.sidebarStateService.closeSidebar();
   }
 }

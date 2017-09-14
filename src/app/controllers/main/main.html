@@ -4,6 +4,7 @@
         <nav class="main-nav container">
             <a class="main-nav__site-name" ui-sref="main.home">Lorem Lovecraft</a>
             <span class="main-nav__toggle glyphicon glyphicon-menu-hamburger"
+                  ng-class="{ 'is-active' : main.isSidebarOpen }"
                   ng-click="main.toggleSidebar()"></span>
         </nav>
 	</div>

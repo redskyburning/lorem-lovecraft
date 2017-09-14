@@ -9,23 +9,6 @@ body {
 	flex-direction:column;
     min-height:100vh;
 
-	&__nav {
-		margin-bottom:0;
-		font-family:$headings-font-family;
-
-		.navbar-brand {
-			font-size:$font-size-h3;
-		}
-
-		.navbar-nav {
-			> li {
-				> a {
-					font-size:$font-size-h4;
-				}
-			}
-		}
-	}
-
     &-nav {
         display:flex;
         flex-direction:row;
@@ -34,10 +17,13 @@ body {
         color:$navbar-inverse-color;
         font-family:$headings-font-family;
         line-height: $line-height-computed;
-        height: $navbar-height;
+        padding-top:$site-padding;
+        padding-bottom:$site-padding;
 
         &__wrap {
             background:$navbar-inverse-bg;
+            position:relative;
+            //z-index: $zindex-navbar-fixed;
         }
 
         &:before, &:after {

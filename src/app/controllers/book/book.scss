@@ -1,7 +1,7 @@
 .book {
     $translucent-stroke:1px solid $gray;
+    $sidebar-width:300px;
 
-    display:flex;
     padding:0;
     position:relative;
 
@@ -53,31 +53,40 @@
     }
 
     @media screen and (max-width:$screen-sm-max) {
-        flex-direction: column-reverse;
-
         &__sidebar {
-            &-toggle {
-                position:relative;
-                border-bottom:$site-spacing solid $gray;
-
-                &__button {
-                    position:absolute;
-                    top:0;
-                    right:$site-gutter;
-                }
-
-                @at-root .is-collapsed & {
-                    border-top:none;
-                }
-            }
+            position:fixed;
+            top:0;
+            bottom:0;
+            left:0px;
+            width:$sidebar-width;
+            max-width:100%;
+            transition:left .25s ease-in-out;
+            overflow-y:auto;
 
             &.is-collapsed {
-                display:none;
+                left:$sidebar-width * -1;
+            }
+
+            &-track {
+            }
+
+            &__toggle {
+                position:absolute;
+                top:$site-padding;
+                right:$site-padding * 1.2;
+                color:rgba(0,0,0,0.25);
+                font-size:25px;
+                transition:color .25s ease-in;
+                cursor:pointer;
+
+                &:hover {
+                    color:rgba(0,0,0,0.5);
+                }
             }
 
             &__form {
                 @media screen and (min-width:$screen-xs-max) and (max-width:$screen-sm-max) {
-                    @include book-options();
+                    //@include book-options();
                 }
             }
 
@@ -90,6 +99,7 @@
     }
 
     @media screen and (min-width:$screen-md) {
+        display:flex;
         flex-direction:row;
         justify-content: space-between;
         align-items:stretch;
@@ -106,7 +116,7 @@
 
         &__sidebar {
             $top-border-width:2px;
-            width:275px;
+            width:$sidebar-width;
             flex:0 0 auto;
             position:sticky;
             top:$site-gutter;
@@ -114,9 +124,8 @@
             border-width:$top-border-width 1px 3px;
             margin-top:$top-border-width * -1;
             max-height:calc(100vh - #{$site-gutter * 2});
-            overflow-y:auto;
 
-            &-toggle {
+            &__toggle {
                 display:none;
             }
 
