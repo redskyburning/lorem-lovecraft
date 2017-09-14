@@ -1,4 +1,5 @@
-<div class="ramblings-options">
+<div class="ramblings-options"
+     ng-model-options="{ debounce : 500 }">
 
     <div class="form-group">
         <label class="control-label">Number of Paragraphs: {{ vm.options.paragraphCount }}</label>
@@ -7,7 +8,7 @@
                min="1"
                max="10"
                step="1"
-               ng-mouseup="vm.handleChange()"
+               ng-change="vm.handleChange()"
                ng-model="vm.options.paragraphCount">
     </div>
 
@@ -18,7 +19,7 @@
                min="1"
                max="10"
                step="1"
-               ng-mouseup="vm.handleChange()"
+               ng-change="vm.handleChange()"
                ng-model="vm.options.sentencesPerParagraph">
     </div>
 
@@ -29,7 +30,7 @@
                min="1"
                max="10"
                step="1"
-               ng-mouseup="vm.handleChange()"
+               ng-change="vm.handleChange()"
                ng-model="vm.options.wordsPerLine">
     </div>
 
@@ -40,7 +41,7 @@
                min="1"
                max="10"
                step="1"
-               ng-mouseup="vm.handleChange()"
+               ng-change="vm.handleChange()"
                ng-model="vm.options.minWordLength">
     </div>
 

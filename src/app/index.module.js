@@ -23,6 +23,7 @@ import {BookService} from './components/book/book.service';
 import {ExcerptService} from './components/excerpt/excerpt.service';
 import {AnalyticsService} from './components/analytics/analytics.service';
 import {ConfigurationService} from './components/configuration/configuration.service';
+import {SidebarStateService} from './components/sidebar-state/sidebar-state.service';
 /* service import injection target */
 /* factory import injection target */
 /* provider import injection target */
@@ -48,6 +49,7 @@ angular.module('ipsum', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngMessages', 'ng
 	.service('excerptService', ExcerptService)
 	.service('analyticsService', AnalyticsService)
 	.service('configurationService', ConfigurationService)
+	.service('sidebarStateService', SidebarStateService)
 	/* service injection target */
 	/* factory injection target */
 	/* provider injection target */

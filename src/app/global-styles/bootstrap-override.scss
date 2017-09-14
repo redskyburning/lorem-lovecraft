@@ -67,3 +67,7 @@
         background: $range-handle-color-hover;
     }
 }
+
+:focus {
+    outline:none;
+}

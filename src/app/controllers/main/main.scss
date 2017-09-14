@@ -9,25 +9,46 @@ body {
 	flex-direction:column;
     min-height:100vh;
 
-	&__nav {
-		margin-bottom:0;
-		font-family:$headings-font-family;
+    &-nav {
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        color:$navbar-inverse-color;
+        font-family:$headings-font-family;
+        line-height: $line-height-computed;
+        padding-top:$site-padding;
+        padding-bottom:$site-padding;
 
-		.navbar-brand {
-			font-size:$font-size-h3;
-		}
+        &__wrap {
+            background:$navbar-inverse-bg;
+            position:relative;
+            //z-index: $zindex-navbar-fixed;
+        }
 
-		.navbar-nav {
-			> li {
-				> a {
-					font-size:$font-size-h4;
-				}
-			}
-		}
-	}
+        &:before, &:after {
+            content:none; // Cancels out weirdness from .container
+        }
+
+        &__site-name {
+            font-size:$font-size-h3;
+
+            &, &:link, &:hover, &:visited, &:active {
+                color:$navbar-inverse-brand-color;
+                text-decoration: none;
+            }
+        }
+
+        &__toggle {
+            transition:color .2s ease-in-out;
+
+            &:hover, &.is-active {
+                color:$navbar-inverse-brand-color;
+            }
+        }
+    }
 
     &__body {
-        padding:0;
         flex:1 1 auto;
         display:flex;
         flex-direction:row;
@@ -39,5 +60,26 @@ body {
         background:$gray-darker;
         color:$white;
         padding:$site-gutter;
+    }
+
+    @media screen and (max-width: $screen-xs-max) {
+        &__body {
+            padding:0;
+        }
+
+    }
+
+    @media screen and (min-width:$screen-sm) {
+        &-nav {
+            padding:$site-padding ($site-gutter * 2);
+        }
+    }
+
+    @media screen and (min-width:$screen-md) {
+        &-nav {
+            &__toggle {
+                display:none;
+            }
+        }
     }
 }

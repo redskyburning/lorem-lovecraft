@@ -1,4 +1,5 @@
-<div class="passage-options">
+<div class="passage-options"
+     ng-model-options="{ debounce : 500 }">
     <div class="form-group">
         <label class="control-label">Number of Paragraphs: {{ vm.paragraphCount }}</label>
         <input class="range-slider"
@@ -6,7 +7,7 @@
                min="1"
                max="10"
                step="1"
-               ng-mouseup="vm.changeParagraphCount()"
+               ng-change="vm.changeParagraphCount()"
                ng-model="vm.paragraphCount">
     </div>
 </div>

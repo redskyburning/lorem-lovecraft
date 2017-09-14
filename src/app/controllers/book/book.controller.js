@@ -1,17 +1,17 @@
 export class BookController {
-  constructor($log, $state, $stateParams, $rootScope, book, manifest, seed) {
+  constructor($log, $state, $stateParams, $rootScope, book, manifest, seed, sidebarStateService) {
     'ngInject';
 
     this.$log       = $log;
     this.$state     = $state;
-    this.$rootScope = $rootScope;
     this.manifest   = manifest;
     this.book       = book;
     this.seed       = seed;
+    this.sidebarStateService = sidebarStateService;
 
     this.selectedBookKey = $stateParams.key;
     this.selectedMode    = angular.copy($state.current.name);
-    this.isCollapsed     = true;
+    this.isOpen          = false;
 
     this.modes = [
       {
@@ -23,6 +23,10 @@ export class BookController {
         key  : 'main.book.ramblings'
       }
     ];
+
+    this.sidebarListener = $rootScope.$on(this.sidebarStateService.changeEventName, (event,isOpen) => {
+      this.isOpen = isOpen;
+    });
 
     if (!this.seed) {
       this.randomizeSeed();
@@ -45,7 +49,7 @@ export class BookController {
     });
   }
 
-  toggleCollapsed() {
-    this.isCollapsed = !this.isCollapsed;
+  closeSidebar() {
+    this.sidebarStateService.closeSidebar();
   }
 }
