@@ -49,7 +49,6 @@ body {
     }
 
     &__body {
-        padding:0;
         flex:1 1 auto;
         display:flex;
         flex-direction:row;
@@ -62,10 +61,21 @@ body {
         color:$white;
         padding:$site-gutter;
     }
-}
 
-@media screen and (min-width:$screen-md) {
-    .main {
+    @media screen and (max-width: $screen-xs-max) {
+        &__body {
+            padding:0;
+        }
+
+    }
+
+    @media screen and (min-width:$screen-sm) {
+        &-nav {
+            padding:$site-padding ($site-gutter * 2);
+        }
+    }
+
+    @media screen and (min-width:$screen-md) {
         &-nav {
             &__toggle {
                 display:none;

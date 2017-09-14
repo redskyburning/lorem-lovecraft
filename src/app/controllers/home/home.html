@@ -1,7 +1,7 @@
 <div class="home">
 	<div class="home__header jumbotron">
-        <h1>Lorem Lovecraft</h1>
-        <h2>Lorem ipsum for a world gone mad</h2>
+        <h1 class="home__title">Lorem Lovecraft</h1>
+        <h2 class="home__subtitle"><span class="home__lorem">Lorem ipsum</span> for a world gone mad</h2>
         <div class="home__header-actions">
             <button class="btn btn-primary"
                     ui-sref="main.book.passage({
@@ -14,7 +14,7 @@
                     })">Jibber Mad Ramblings</button>
         </div>
 	</div>
-	<div class="home__content container">
+	<div class="home__content">
         <render-excerpt excerpt="vm.excerpt"></render-excerpt>
 	</div>
 </div>
