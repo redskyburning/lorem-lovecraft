@@ -1,6 +1,6 @@
 # Lorem Lovecraft
 
-####An AngularJS Lorem Ipsum generator using the works of HP Lovecraft
+#### An AngularJS Lorem Ipsum generator using the works of HP Lovecraft
 
 ## Installation
 
