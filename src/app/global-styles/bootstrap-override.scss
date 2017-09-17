@@ -2,6 +2,19 @@
 .btn {
 	font-family:$btn-font-family;
 	letter-spacing: .03em;
+
+    &,
+    &:active,
+    &.active {
+        &:focus,
+        &.focus {
+            outline:none;
+        }
+    }
+
+    &-primary {
+        @include button-variant-dark($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    }
 }
 
 .jumbotron {

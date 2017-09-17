@@ -3,6 +3,6 @@ bower_components
 node_modules
 .tmp
 dist/*
-book_source/*
+#book_source/*
 .firebaserc
 book_json/*
