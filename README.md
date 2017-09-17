@@ -97,3 +97,44 @@ To bring together CircleCI and Firebase we're going to need to add some environm
 * `FIREBASE_DEPLOY_TOKEN_TEST` : The firebase deploy token for production environment.
 * `ANALYTICS_ID_TEST` : Google analytics Id for test environment.
 
+## Adding Content
+
+Lorem Lovecraft is designed to be a repurposable seed project for creating lorem ipsum generators. With a bit of modification any plaintext (.txt) document can be added to the site. 
+
+Keep in mind that copyright is an issue when selecting texts to use, so finding works that are [public domain](https://en.wikipedia.org/wiki/Public_domain_in_the_United_States) is your best bet. [Project Gutenberg](https://www.gutenberg.org) and [WikiSource](https://en.wikisource.org) are both great sources for public domain content with support for downloading plaintext. Works that use a [Creative Commons](https://creativecommons.org/) license are a good option too, but these tend to be harder to find. 
+
+Once you've found some content add the .txt file to the `/book_source` directory to get started.
+
+### Preparing content
+
+The text needs to be fairly uniform for `gulp books` to parse it into json. Most books are a fairly uniform collection of paragraphs and section headings that form the body of the book, bookened by non-uniform sections at the start and end with titles, tables of contents, footnotes, etc. Step one is removing these start and end sections. 
+
+### Adding metadata with frontmatter
+
+Some of the information you just removed was useful, things like the book's title. We can preserve this information using frontmatter, a block of yaml at the start of the content. Frontmatter is an idea that comes from the [Jekyll](https://jekyllrb.com/docs/frontmatter/) static site generator, in case you were wondering. 
+
+#### Example
+
+```yaml 
+
+---
+title: 'The Call of Cthulhu'
+key: 'call-of-cthulhu'
+---
+```
+
+#### Frontmatter Schema
+
+
+```yaml 
+
+---
+title: 'Title of the book. (required)'
+key: 'Internal unqiue name for the book. Kebab case (written-like-this) is standard. (optional)'
+---
+```
+
+### Testing your content
+
+Once your .txt file is in place in the `/book_source` directory the build process can handle the rest. Running `gulp books` will parse the .txt file into json and place the resulting file in the `/book_json`. Running this job and checking the json is a good first step, or you can just run `gulp serve` and see the json in action.
+
