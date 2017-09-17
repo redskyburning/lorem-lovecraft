@@ -3,7 +3,7 @@ key: 'call-of-cthulhu'
 title: 'The Call of Cthulhu'
 author: 'HP Lovecraft'
 source: 'https://en.wikisource.org/wiki/The_Call_of_Cthulhu'
-year: 1928
+year: 1926
 ---
 
 I. The Horror in Clay

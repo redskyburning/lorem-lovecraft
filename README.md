@@ -19,7 +19,7 @@ Enjoy snippets of old books but fear the consequences of repeated exposure to ho
 * `gulp serve` : Start a local development server.
 * `gulp build` : Generate an optimized build for deployment
 * `gulp serve:dist` : Build and serve the generated build.
-* `gulp books` : Parse books into json
+* `gulp books:parse` : Parse books into json
 
 ## Deployment
 
@@ -107,7 +107,7 @@ Once you've found some content add the .txt file to the `/book_source` directory
 
 ### Preparing content
 
-The text needs to be fairly uniform for `gulp books` to parse it into json. Most books are a fairly uniform collection of paragraphs and section headings that form the body of the book, bookened by non-uniform sections at the start and end with titles, tables of contents, footnotes, etc. Step one is removing these start and end sections. 
+The text needs to be fairly uniform for `gulp books:parse` to parse it into json. Most books are a fairly uniform collection of paragraphs and section headings that form the body of the book, bookened by non-uniform sections at the start and end with titles, tables of contents, footnotes, etc. Step one is removing these start and end sections. Don't worry about chapter headings, the parser will deal with them.
 
 ### Adding metadata with frontmatter
 
@@ -136,7 +136,7 @@ key: 'Internal unqiue name for the book. Kebab case (written-like-this) is stand
 
 ### Testing your content
 
-Once your .txt file is in place in the `/book_source` directory the build process can handle the rest. Running `gulp books` will parse the .txt file into json and place the resulting file in the `/book_json`. Running this job and checking the json is a good first step, or you can just run `gulp serve` and see the json in action.
+Once your .txt file is in place in the `/book_source` directory the build process can handle the rest. Running `gulp books:parse` will parse the .txt file into json and place the resulting file in the `/book_json`. Running this job and checking the json is a good first step, or you can just run `gulp serve` and see the json in action.
 
 ## License
 
