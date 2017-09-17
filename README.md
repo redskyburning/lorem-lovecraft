@@ -138,3 +138,7 @@ key: 'Internal unqiue name for the book. Kebab case (written-like-this) is stand
 
 Once your .txt file is in place in the `/book_source` directory the build process can handle the rest. Running `gulp books` will parse the .txt file into json and place the resulting file in the `/book_json`. Running this job and checking the json is a good first step, or you can just run `gulp serve` and see the json in action.
 
+## License
+
+MIT
+
