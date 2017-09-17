@@ -38,18 +38,62 @@ firebase login
 firebase deploy
 ```
 
+#### Creating a test environment
+
+You may want a second environment to test changes before you deploy to production. Create a second project in firebase and run the following commands.
+
+```shell
+# Auth into firebase as above if you haven't already.
+
+# Add a reference to your test environment and switch to using that environment.
+firebase use --add
+
+# Deploy as normal, now using the test environment
+firebase deploy
+
+# Switch between firebase environments locally
+firebase use my-firebase-project-name
+
+```
+
 ### Deploying Elsewhere
 
 `gulp build` generates an easily deployable bundle in the `/dist` folder. Copy the contents into the webroot of the server of your choice, configure your server to rewrite requests to `/index.html` and you'll be up and running. 
 
 More thorough instructions to come in a future version.
 
-### Continuous Integration with CircleCI and Firebase
+## Continuous Integration with CircleCI and Firebase
 
-Adding CircleCI support is easy. Once you've forked the repo, set up a CircleCI account with your github account. Set up a project using the repo and add the following environment variables: 
+Adding CircleCI support is easy. Once you've forked the repo, set up a CircleCI account with your github account. Set up a project using the repo and two workflows will automatically populate in Circle.
+ 
+ * `deploy_release` : Watches for new tags on master and deploys to production. 
+ * `deploy_develop` : Watches for commits on develop and deploys to test. 
+ 
+ ### Generating a Firebase deploy token
+ 
+ In order for Circle to deploy to Firebase you're going to need a CI-friendly deploy token.
+ 
+ ```shell
+ firebase use my-firebase-project-name
+ firebase login:ci
+ 
+ # Follow the instructions and save the generated token for later.
+ ```
+ Note that you'll need to do this for each environemnt, switching between them by using `firebase use new-firebase-environment-name`.
+ 
+### Adding CircleCI environment variables
+ 
+To bring together CircleCI and Firebase we're going to need to add some environment variables. For security reasons you should *never* store sensitive information like deploy tokens in your repo. You also shouldn't store environment-specific configuration information like your google analytics id. Environment variables solve for both of these issues. You can set these variables in the environment variables section of your project's settings. Add the following environment variables and Circle will use them as arguments in the gulp build to generate an environment-specific build.
 
-* `FIREBASE_PROJECT_PROD` : The name of your firebase project
-* `FIREBASE_DEPLOY_TOKEN` : The firebase deploy token				
-* `ENVIRONMENT_NAME_TEST`		
-* `FIREBASE_DEPLOY_TOKEN_TEST`		
-* `FIREBASE_PROJECT_TEST`
+#### Production Enviroment Variables
+
+* `FIREBASE_PROJECT_PROD` : The firebase project name for production environment.
+* `FIREBASE_DEPLOY_TOKEN_PROD` : The firebase deploy token for production environment.
+* `ANALYTICS_ID_PROD` : Google analytics Id for production environment.
+
+#### Testing Enviroment Variables
+
+* `FIREBASE_PROJECT_TEST` : The firebase project name for test environment.
+* `FIREBASE_DEPLOY_TOKEN_TEST` : The firebase deploy token for production environment.
+* `ANALYTICS_ID_TEST` : Google analytics Id for test environment.
+
