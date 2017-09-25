@@ -59,7 +59,10 @@ body {
     &__footer {
         background:$gray-darker;
         color:$white;
-        padding:$site-gutter;
+
+        &__inner {
+            padding:$site-gutter ($site-gutter * 2);
+        }
     }
 
     @media screen and (max-width: $screen-xs-max) {
