@@ -1,7 +1,7 @@
 .render-excerpt {
     $root:&;
     display:block;
-    margin-bottom:$site-gutter * 2;
+    margin-bottom:$site-gutter;
 
     &__paragraph {
         &:first-of-type {

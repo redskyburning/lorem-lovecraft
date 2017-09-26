@@ -39,11 +39,14 @@ body {
             }
         }
 
-        &__toggle {
+        &__toggle-icon {
+            color:$navbar-inverse-brand-color;
             transition:color .2s ease-in-out;
+            width:25px;
+            height:auto;
 
-            &:hover, &.is-active {
-                color:$navbar-inverse-brand-color;
+            &.is-active {
+                color:darken($navbar-inverse-brand-color,20%);
             }
         }
     }
@@ -61,7 +64,8 @@ body {
         color:$white;
 
         &__inner {
-            padding:$site-gutter ($site-gutter * 2);
+            padding-top:$site-gutter;
+            padding-bottom:$site-gutter;
         }
     }
 

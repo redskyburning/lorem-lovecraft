@@ -13,7 +13,7 @@
     }
 
     &__content {
-        padding:0 $site-gutter;
+        padding:$site-padding $site-gutter $site-gutter;
     }
 
     @media screen and (max-width: $screen-xs-max) {
