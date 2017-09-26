@@ -61,7 +61,14 @@ body {
 
     &__footer {
         background:$gray-darker;
-        color:$white;
+        text-align: center;
+        color:$gray-lighter;
+        font-size:.8em;
+
+        a {
+            color:inherit;
+            text-decoration: underline;
+        }
 
         &__inner {
             padding-top:$site-gutter;
@@ -86,6 +93,13 @@ body {
         &-nav {
             &__toggle {
                 display:none;
+            }
+        }
+
+        &__footer {
+            &__inner {
+                padding-left:$site-gutter * 4;
+                padding-right:$site-gutter * 4;
             }
         }
     }
