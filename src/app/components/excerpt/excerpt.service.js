@@ -39,7 +39,7 @@ export class ExcerptService {
 
   getIpsumExcerptFromBook(book, options = {}) {
     let defaultOptions = {
-      paragraphCount       : 8,
+      paragraphCount       : 5,
       sentencesPerParagraph: 8,
       wordsPerLine         : 10,
       minWordLength        : 4,

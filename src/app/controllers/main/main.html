@@ -1,19 +1,40 @@
 <div class="main">
 
-	<div class="main-nav__wrap">
+    <div class="main-nav__wrap">
         <nav class="main-nav container">
             <a class="main-nav__site-name" ui-sref="main.home">Lorem Lovecraft</a>
-            <span class="main-nav__toggle glyphicon glyphicon-menu-hamburger"
-                  ng-class="{ 'is-active' : main.isSidebarOpen }"
-                  ng-click="main.toggleSidebar()"></span>
+            <svg class="main-nav__toggle-icon"
+                 ng-class="{ 'is-active' : main.isSidebarOpen }"
+                 ng-if="main.showToggle"
+                 ng-click="main.toggleSidebar()"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
         </nav>
-	</div>
+    </div>
 
     <div class="main__body container" ui-view></div>
 
     <div class="main__footer">
         <div class="main__footer__inner container">
-            It was Rodriguez the Portuguese who climbed up the foot of the monolith and shouted of what he had found.
+            <p>Lorem Lovecraft is an <a href="https://github.com/redskyburning/lorem-lovecraft" target="_blank">open source project</a> based on the works of <a href="https://en.wikipedia.org/wiki/H._P._Lovecraft" target="_blank">HP Lovecraft</a>.</p>
+            <p>Enjoy snippets of old books but fear the consequences of repeated exposure to horrors from beyond space and time? Please <a href="https://github.com/redskyburning/lorem-lovecraft">steal this code</a> and create your own ipsum generator. I assure you, it's much easier than non-euclidean geometry.</p>
         </div>
     </div>
 

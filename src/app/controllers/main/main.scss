@@ -39,11 +39,14 @@ body {
             }
         }
 
-        &__toggle {
+        &__toggle-icon {
+            color:$navbar-inverse-brand-color;
             transition:color .2s ease-in-out;
+            width:25px;
+            height:auto;
 
-            &:hover, &.is-active {
-                color:$navbar-inverse-brand-color;
+            &.is-active {
+                color:darken($navbar-inverse-brand-color,20%);
             }
         }
     }
@@ -58,8 +61,19 @@ body {
 
     &__footer {
         background:$gray-darker;
-        color:$white;
-        padding:$site-gutter;
+        text-align: center;
+        color:$gray-lighter;
+        font-size:.8em;
+
+        a {
+            color:inherit;
+            text-decoration: underline;
+        }
+
+        &__inner {
+            padding-top:$site-gutter;
+            padding-bottom:$site-gutter;
+        }
     }
 
     @media screen and (max-width: $screen-xs-max) {
@@ -77,8 +91,15 @@ body {
 
     @media screen and (min-width:$screen-md) {
         &-nav {
-            &__toggle {
+            &__toggle-icon {
                 display:none;
+            }
+        }
+
+        &__footer {
+            &__inner {
+                padding-left:$site-gutter * 4;
+                padding-right:$site-gutter * 4;
             }
         }
     }
