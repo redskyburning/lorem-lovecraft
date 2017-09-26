@@ -4,6 +4,7 @@
 
     padding:0;
     position:relative;
+    width:100%; // Fills space when excerpt is smaller width
 
     &__main {
         flex:1 1 auto;

@@ -1,5 +1,6 @@
 .home {
     background-color:$white;
+    width:100%; // Fills space when excerpt is smaller width
 
     &__header {
         display:flex;
@@ -14,6 +15,12 @@
 
     &__content {
         padding:$site-padding $site-gutter $site-gutter;
+        display:flex;
+        flex-dierction:row;
+        justify-content: center;
+    }
+
+    .render-excerpt {
     }
 
     @media screen and (max-width: $screen-xs-max) {

@@ -2,13 +2,27 @@
     $root:&;
     display:block;
     margin-bottom:$site-gutter;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 
     &__paragraph {
+
+        &:first-of-type {
+        }
+    }
+
+    &__paragraph {
+        max-width:500px;
+        text-align:justify;
+        margin-bottom:1.5em;
+
         &:first-of-type {
             $lead-font-size:floor(($font-size-base * 1.4));
             $first-line-size:floor($lead-font-size * 1.8);
             $first-line-height:$first-line-size * $line-height-base;
             font-size: $lead-font-size;
+            max-width:600px;
 
             &:first-line {
                 font-size:$first-line-size;
@@ -19,9 +33,23 @@
                 font-size:floor($first-line-size * 2);
                 line-height:$first-line-height;
             }
-        }
-    }
 
-    &__sentence {
+            @media screen and (max-width: $screen-xs-max) {
+                $lead-font-size:floor(($font-size-base * 1.3));
+                $first-line-size:floor($lead-font-size * 1.6);
+                $first-line-height:$first-line-size * $line-height-base;
+                font-size: $lead-font-size;
+
+                &:first-line {
+                    font-size:$first-line-size;
+                    line-height:$first-line-height;
+                }
+
+                &:first-letter {
+                    font-size:floor($first-line-size * 2);
+                    line-height:$first-line-height;
+                }
+            }
+        }
     }
 }

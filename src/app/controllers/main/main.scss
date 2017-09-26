@@ -57,6 +57,7 @@ body {
         flex-direction:row;
         justify-content: center;
         align-items:stretch;
+        width:100%; // Fills space when excerpt is smaller width
     }
 
     &__footer {
@@ -91,7 +92,7 @@ body {
 
     @media screen and (min-width:$screen-md) {
         &-nav {
-            &__toggle {
+            &__toggle-icon {
                 display:none;
             }
         }
