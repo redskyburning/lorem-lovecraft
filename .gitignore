@@ -6,3 +6,4 @@ dist/*
 #book_source/*
 .firebaserc
 book_json/*
+coverage

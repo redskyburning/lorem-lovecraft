@@ -4,11 +4,12 @@
 
     padding:0;
     position:relative;
+    width:100%; // Fills space when excerpt is smaller width
 
     &__main {
         flex:1 1 auto;
         background-color:$white;
-        padding:0 $site-gutter;
+        padding:$site-gutter;
         box-shadow: inset 0 0 100px 5px rgba(0,0,0,0.07);
     }
 
@@ -34,7 +35,7 @@
         justify-content: space-between;
         align-items:center;
         border-bottom:3px solid $gray-darker;
-        padding:$site-gutter 0 $site-spacing;
+        padding-bottom:$site-spacing;
         margin-bottom:$site-gutter;
     }
 
@@ -72,15 +73,21 @@
 
             &__toggle {
                 position:absolute;
-                top:$site-padding;
-                right:$site-padding * 1.2;
-                color:rgba(0,0,0,0.25);
-                font-size:25px;
+                top:10px;
+                right:15px;
+                color:rgba(0,0,0,0.4);
+                font-size:30px;
                 transition:color .25s ease-in;
                 cursor:pointer;
+                width:30px;
+
+                svg {
+                    width:100%;
+                    height:auto;
+                }
 
                 &:hover {
-                    color:rgba(0,0,0,0.5);
+                    color:rgba(0,0,0,0.8);
                 }
             }
 

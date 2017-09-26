@@ -67,7 +67,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       resolve : {
         ramblingsParams : ($stateParams) => {
           return {
-            paragraphCount       : $stateParams.pc || 8,
+            paragraphCount       : $stateParams.pc || 5,
             sentencesPerParagraph: $stateParams.spp || 8,
             wordsPerLine         : $stateParams.wpl || 10,
             minWordLength        : $stateParams.mwl || 4
