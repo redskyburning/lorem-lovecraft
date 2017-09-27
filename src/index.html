@@ -1,16 +1,20 @@
 <!doctype html>
 <html ng-app="ipsum" ng-strict-di>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Lorem Lovecraft</title>
     <base href="/">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <meta property="og:title" content="Lorem Lovecraft" />
-    <meta property="og:description" content="Lorem Ipsum for a world gone mad..." />
-    <meta property="og:url" content="https://lorem-lovecraft.com" />
-    <meta property="og:image" content="https://lorem-lovecraft.com/images/lovecraft-square.jpg" />
+    <meta property="og:title" content="Lorem Lovecraft"/>
+    <meta property="og:description" content="Lorem Ipsum for a world gone mad..."/>
+    <meta property="og:url" content="https://lorem-lovecraft.com"/>
+    <meta property="og:image" content="https://lorem-lovecraft.com/assets/images/lovecraft-sq.jpg"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lorem Lovecraft">
+    <meta name="twitter:description" content="Lorem Ipsum for a world gone mad...">
+    <meta name="twitter:image" content="https://lorem-lovecraft.com/assets/images/lovecraft-sq.jpg">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
@@ -19,27 +23,34 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-	  <link href="https://fonts.googleapis.com/css?family=Alegreya+SC|Crimson+Text|Karma|Marcellus+SC|Playfair+Display+SC|Zilla+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+SC|Crimson+Text|Karma|Marcellus+SC|Playfair+Display+SC|Zilla+Slab" rel="stylesheet">
 
-	<!-- build:css({.tmp/serve,src}) styles/app.css -->
-	<!-- inject:css -->
-	<!-- css files will be automatically insert here -->
-	<!-- endinject -->
-	<!-- endbuild -->
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
 </head>
 <body>
 <!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-	your browser</a> to improve your experience.</p>
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <div class="main__wrapper" ui-view></div>
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src   = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 </script>
 
 <!-- build:js(src) scripts/vendor.js -->
